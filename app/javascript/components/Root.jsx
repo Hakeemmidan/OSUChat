@@ -4,10 +4,12 @@ import { HashRouter } from 'react-router-dom';
 import { App } from './App';
 
 
-export const Root = (props) => (
-    <Provider store={props.store}>
+const Root = () => (
+    // <Provider>
         <HashRouter>
             <App />
         </HashRouter>
-    </Provider>
+    // </Provider>
 )
+
+export default Root

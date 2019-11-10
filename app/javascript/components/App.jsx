@@ -1,7 +1,7 @@
 import React from 'react';
 // import { AuthRoute } from '../util/route_util';
 
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { Splash } from './splash/Splash';
 
 // import SignUpFormContainer from './auth/signup_form_container';
