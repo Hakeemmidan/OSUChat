@@ -8,8 +8,6 @@ export class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fillUsername = this.fillUsername.bind(this)
-    this.fillPassowrd = this.fillPassowrd.bind(this)
   }
 
   update(field) {

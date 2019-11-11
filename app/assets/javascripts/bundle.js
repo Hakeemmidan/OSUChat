@@ -209,8 +209,6 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.fillUsername = _this.fillUsername.bind(_assertThisInitialized(_this));
-    _this.fillPassowrd = _this.fillPassowrd.bind(_assertThisInitialized(_this));
     return _this;
   }
 
