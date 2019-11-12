@@ -388,6 +388,22 @@ function (_React$Component) {
       var username = 'demoUser'.split('');
       var usernameInputField = $('.username-input-field');
       this.fillUsername(true, usernameInputField, username);
+    }
+  }, {
+    key: "renderUsernameInput",
+    value: function renderUsernameInput() {
+      if (this.props.formType === 'signup') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "session-input-container"
+        }, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "session-textbox username-input-field"
+        }));
+      }
+
+      return null;
     } // --------------- demo login END --------------- //
 
   }, {
@@ -401,14 +417,7 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "session-input-container"
-      }, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.username,
-        onChange: this.update('username'),
-        className: "session-textbox username-input-field"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderUsernameInput(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
       }, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
@@ -30767,7 +30776,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

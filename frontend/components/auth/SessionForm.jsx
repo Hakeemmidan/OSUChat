@@ -97,6 +97,25 @@ export class SessionForm extends React.Component {
   }
 
 
+  renderUsernameInput() {
+    if (this.props.formType === 'signup') {
+      return (
+        <label className="session-input-container">
+          Username
+          <br />
+          <input type="text"
+            value={this.state.username}
+            onChange={this.update('username')}
+            className="session-textbox username-input-field"
+          />
+        </label>
+      )
+    }
+
+    return null
+  }
+
+
   // --------------- demo login END --------------- //
 
   render() {
@@ -113,15 +132,7 @@ export class SessionForm extends React.Component {
             <div className="login-form">
               <br />
 
-              <label className="session-input-container">
-                Username
-                <br/>
-                <input type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                  className="session-textbox username-input-field"
-                />
-              </label>
+              {this.renderUsernameInput()}
 
               <br />
 
