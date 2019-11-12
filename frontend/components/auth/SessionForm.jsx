@@ -8,9 +8,6 @@ export class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoLogin = this.demoLogin.bind(this);
-    this.fillUsername = this.fillUsername.bind(this)
-    this.fillPassowrd = this.fillPassowrd.bind(this)
   }
 
   update(field) {
@@ -37,66 +34,6 @@ export class SessionForm extends React.Component {
     );
   }
 
-  // --------------- demo login START --------------- //
-
-  fillUsername(flag, usernameInputField, username) {
-    if (flag) {
-      setTimeout(function () {
-        // add a letter to username
-        const currentLetter = username.shift();
-        usernameInputField[0].value += currentLetter
-        
-        // if the field does not have a suffiecent letter count
-        if (usernameInputField[0].value.length < 'demoUser'.length) {
-          // add the next letter
-          this.fillUsername(true, usernameInputField, username)
-        } else {
-          // otherwise, exit of recursive loop
-          this.fillUsername(false, usernameInputField, username)
-        }
-      }.bind(this), 100);
-
-      return;
-    }
-    const password = '12345678'.split('');
-    const passwordInputField = $('.password-input-field')
-    this.fillPassowrd(true, passwordInputField, password)
-  }
-
-  fillPassowrd(flag, passwordInputField, password) {
-    if (flag) {
-      setTimeout(function () {
-        passwordInputField[0].value += password.shift();
-        if (passwordInputField[0].value.length < '12345678'.length) {
-          this.fillPassowrd(true, passwordInputField, password)
-        } else {
-          this.fillPassowrd(false, passwordInputField, password)
-        }
-      }.bind(this), 100);
-
-      return
-    }
-
-    // The above only adds to the input field and does not change the actual state
-    // so I decided to change the state at this point
-    this.setState({
-      username: 'demoUser',
-      password: '12345678'
-    })
-    $('.session-submit').click();
-  }
-  // fillUsername, and fillPassword are inspired by: https://stackoverflow.com/a/4122317/7974948
-
-
-  demoLogin(e) {
-    e.preventDefault();
-    window.location.hash = '#/login';
-    const username = 'demoUser'.split('');
-    const usernameInputField = $('.username-input-field')
-    this.fillUsername(true, usernameInputField, username)
-  }
-
-
   renderUsernameInput() {
     if (this.props.formType === 'signup') {
       return (
@@ -114,9 +51,6 @@ export class SessionForm extends React.Component {
 
     return null
   }
-
-
-  // --------------- demo login END --------------- //
 
   render() {
     return (
@@ -166,12 +100,6 @@ export class SessionForm extends React.Component {
           
           <div>
             {this.props.navLink}
-          </div>
-
-          <div className="session-form-nav-button" onClick={this.demoLogin}>
-            <button className="session-form-nav-button"> 
-              demo login 
-            </button>
           </div>
         </div>
       </div>

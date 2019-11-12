@@ -296,9 +296,6 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
-    _this.fillUsername = _this.fillUsername.bind(_assertThisInitialized(_this));
-    _this.fillPassowrd = _this.fillPassowrd.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -329,65 +326,6 @@ function (_React$Component) {
           className: "session-error"
         }, error);
       }));
-    } // --------------- demo login START --------------- //
-
-  }, {
-    key: "fillUsername",
-    value: function fillUsername(flag, usernameInputField, username) {
-      if (flag) {
-        setTimeout(function () {
-          // add a letter to username
-          var currentLetter = username.shift();
-          usernameInputField[0].value += currentLetter; // if the field does not have a suffiecent letter count
-
-          if (usernameInputField[0].value.length < 'demoUser'.length) {
-            // add the next letter
-            this.fillUsername(true, usernameInputField, username);
-          } else {
-            // otherwise, exit of recursive loop
-            this.fillUsername(false, usernameInputField, username);
-          }
-        }.bind(this), 100);
-        return;
-      }
-
-      var password = '12345678'.split('');
-      var passwordInputField = $('.password-input-field');
-      this.fillPassowrd(true, passwordInputField, password);
-    }
-  }, {
-    key: "fillPassowrd",
-    value: function fillPassowrd(flag, passwordInputField, password) {
-      if (flag) {
-        setTimeout(function () {
-          passwordInputField[0].value += password.shift();
-
-          if (passwordInputField[0].value.length < '12345678'.length) {
-            this.fillPassowrd(true, passwordInputField, password);
-          } else {
-            this.fillPassowrd(false, passwordInputField, password);
-          }
-        }.bind(this), 100);
-        return;
-      } // The above only adds to the input field and does not change the actual state
-      // so I decided to change the state at this point
-
-
-      this.setState({
-        username: 'demoUser',
-        password: '12345678'
-      });
-      $('.session-submit').click();
-    } // fillUsername, and fillPassword are inspired by: https://stackoverflow.com/a/4122317/7974948
-
-  }, {
-    key: "demoLogin",
-    value: function demoLogin(e) {
-      e.preventDefault();
-      window.location.hash = '#/login';
-      var username = 'demoUser'.split('');
-      var usernameInputField = $('.username-input-field');
-      this.fillUsername(true, usernameInputField, username);
     }
   }, {
     key: "renderUsernameInput",
@@ -404,8 +342,7 @@ function (_React$Component) {
       }
 
       return null;
-    } // --------------- demo login END --------------- //
-
+    }
   }, {
     key: "render",
     value: function render() {
@@ -436,12 +373,7 @@ function (_React$Component) {
         className: "left"
       }), "OR", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "right"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-form-nav-button",
-        onClick: this.demoLogin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "session-form-nav-button"
-      }, "demo login"))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.navLink)));
     }
   }]);
 
