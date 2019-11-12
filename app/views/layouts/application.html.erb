@@ -6,10 +6,22 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-  </head>
+    <%= javascript_include_tag 'application' %>
+    <% if current_user %>
+      <script>
+        window.currentUser = { 
+          "id": <%= current_user.id %>,
+          "username": "<%= current_user.username %>"
+          };
+      </script>
+    <% else %>
+      <script>
+        window.currentUser = null;
+      </script>
+    <% end %>
 
+  </head>
+  
   <body>
     <%= yield %>
   </body>

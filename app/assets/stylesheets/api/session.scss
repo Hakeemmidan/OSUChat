@@ -1,3 +1,171 @@
 // Place all the styles related to the api/session controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// ------------------------ header START ------------------------ //
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; 
+  height: 10vh;
+  border-bottom: 1px solid grey;
+}
+// ------------------------ header END ------------------------ //
+
+// ------------------------ session form styling START ------------------------ //
+.login-form-box {
+  border: 1px solid grey;
+  width: 33%;
+  padding-right: 7vh;
+  padding-left: 7vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.login-form-container {
+  padding-top: 4vh;
+  display: flex;
+  justify-content: center;
+}
+
+.session-textbox {
+  display: block;
+  height: 48px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  border-style: none;
+  border: 1px solid #E1E3DF;
+  box-shadow: none;
+  max-width: 100%;
+}
+
+.session-form-nav-button {
+  all: initial;
+  * {
+    all: unset;
+  }
+  // ^ clears all styling
+  display: block;
+  cursor: pointer;
+  border: 1px solid grey;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-top: 1.3vh;
+  padding-bottom: 1.3vh;
+  text-decoration: none; 
+  border-radius: 7px;
+  color: black;
+  margin: 7px;
+  text-align: center;
+}
+
+.session-form-nav-button:hover {
+  background-color: rgb(247, 247, 247)
+}
+
+.session-submit {
+  all: initial;
+  * {
+    all: unset;
+  }
+  display: block;
+  cursor: pointer;
+  border: 1px solid grey;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-top: 1.3vh;
+  padding-bottom: 1.3vh;
+  text-decoration: none; 
+  border-radius: 7px;
+  color: white;
+  margin: 7px;
+  text-align: center;
+  background-color: black;
+}
+
+.session-submit:hover {
+  background-color: rgb(55, 55, 55);
+}
+
+// ------- session 'OR' START------- //
+.divider {
+	width:100%;
+	text-align:center;
+}
+
+.divider hr {
+	margin-left:auto;
+	margin-right:auto;
+  width:40%;
+  color: lightgrey;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+// source: https://stackoverflow.com/a/2812819/7974948
+// ------- session 'OR' END------- //
+
+// ------------------------ session form styling END ------------------------ //
+// ------------------------ navbar buttons START------------------------ //
+.login-navbar-button {
+  border: 1px solid grey;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-top: 1.3vh;
+  padding-bottom: 1.3vh;
+  text-decoration: none; 
+  border-radius: 7px;
+  color: black;
+}
+
+.login-navbar-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.logout-navbar-button {
+  border: 1px solid grey;
+  padding-right: 2vh;
+  padding-left: 2vh;
+  padding-top: 1.3vh;
+  padding-bottom: 1.3vh;
+  text-decoration: none; 
+  border-radius: 7px;
+  cursor: pointer;
+  color: black;
+}
+
+.logout-navbar-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.register-navbar-button {
+  padding-right: 2vh;
+  padding-left: 2vh;
+  text-decoration: none; 
+  color: black;
+}
+
+.register-navbar-button:hover {
+  text-decoration: underline;
+}
+
+// ------------------------ navbar buttons END ------------------------ //
+
+.session-error {
+  list-style-type: circle;
+  color: darkred;
+  float: left;
+}
+.session-errors-ul {
+  margin-bottom: 30px;
+}
