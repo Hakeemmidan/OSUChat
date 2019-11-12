@@ -9,6 +9,7 @@ export class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitWithDefaultUsername = this.handleSubmitWithDefaultUsername.bind(this);
   }
 
   update(field) {
@@ -18,14 +19,19 @@ export class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
+    e.preventDefault();
     // Set the username to first part of email if there is no username
     if (this.state.username.replace(/ /g, '') === '') {
       this.setState({
         username: this.state.email.split('@')[0]
-      })
+      }, this.handleSubmitWithDefaultUsername)
+    } else {
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
     }
+  }
 
-    e.preventDefault();
+  handleSubmitWithDefaultUsername() {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }

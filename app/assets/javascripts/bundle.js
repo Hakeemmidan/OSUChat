@@ -297,6 +297,7 @@ function (_React$Component) {
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleSubmitWithDefaultUsername = _this.handleSubmitWithDefaultUsername.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -312,14 +313,20 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      // Set the username to first part of email if there is no username
+      e.preventDefault(); // Set the username to first part of email if there is no username
+
       if (this.state.username.replace(/ /g, '') === '') {
         this.setState({
           username: this.state.email.split('@')[0]
-        });
+        }, this.handleSubmitWithDefaultUsername);
+      } else {
+        var user = Object.assign({}, this.state);
+        this.props.processForm(user);
       }
-
-      e.preventDefault();
+    }
+  }, {
+    key: "handleSubmitWithDefaultUsername",
+    value: function handleSubmitWithDefaultUsername() {
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
     }
