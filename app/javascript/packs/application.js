@@ -18,3 +18,9 @@ require("channels")
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");
 ReactRailsUJS.useContext(componentRequireContext);
+
+//= require rails-ujs
+//= require activestorage
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
