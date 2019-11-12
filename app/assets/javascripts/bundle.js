@@ -293,12 +293,11 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SessionForm).call(this, props));
     _this.state = {
       username: '',
+      email: '',
       password: ''
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
-    _this.fillUsername = _this.fillUsername.bind(_assertThisInitialized(_this));
-    _this.fillPassowrd = _this.fillPassowrd.bind(_assertThisInitialized(_this));
+    _this.handleSubmitWithDefaultUsername = _this.handleSubmitWithDefaultUsername.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -314,7 +313,20 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault(); // Set the username to first part of email if there is no username
+
+      if (this.state.username.replace(/ /g, '') === '') {
+        this.setState({
+          username: this.state.email.split('@')[0]
+        }, this.handleSubmitWithDefaultUsername);
+      } else {
+        var user = Object.assign({}, this.state);
+        this.props.processForm(user);
+      }
+    }
+  }, {
+    key: "handleSubmitWithDefaultUsername",
+    value: function handleSubmitWithDefaultUsername() {
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
     }
@@ -329,67 +341,23 @@ function (_React$Component) {
           className: "session-error"
         }, error);
       }));
-    } // --------------- demo login START --------------- //
-
-  }, {
-    key: "fillUsername",
-    value: function fillUsername(flag, usernameInputField, username) {
-      if (flag) {
-        setTimeout(function () {
-          // add a letter to username
-          var currentLetter = username.shift();
-          usernameInputField[0].value += currentLetter; // if the field does not have a suffiecent letter count
-
-          if (usernameInputField[0].value.length < 'demoUser'.length) {
-            // add the next letter
-            this.fillUsername(true, usernameInputField, username);
-          } else {
-            // otherwise, exit of recursive loop
-            this.fillUsername(false, usernameInputField, username);
-          }
-        }.bind(this), 100);
-        return;
-      }
-
-      var password = '12345678'.split('');
-      var passwordInputField = $('.password-input-field');
-      this.fillPassowrd(true, passwordInputField, password);
     }
   }, {
-    key: "fillPassowrd",
-    value: function fillPassowrd(flag, passwordInputField, password) {
-      if (flag) {
-        setTimeout(function () {
-          passwordInputField[0].value += password.shift();
+    key: "renderUsernameInput",
+    value: function renderUsernameInput() {
+      if (this.props.formType === 'signup') {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+          className: "session-input-container"
+        }, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          value: this.state.username,
+          onChange: this.update('username'),
+          className: "session-textbox"
+        }));
+      }
 
-          if (passwordInputField[0].value.length < '12345678'.length) {
-            this.fillPassowrd(true, passwordInputField, password);
-          } else {
-            this.fillPassowrd(false, passwordInputField, password);
-          }
-        }.bind(this), 100);
-        return;
-      } // The above only adds to the input field and does not change the actual state
-      // so I decided to change the state at this point
-
-
-      this.setState({
-        username: 'demoUser',
-        password: '12345678'
-      });
-      $('.session-submit').click();
-    } // fillUsername, and fillPassword are inspired by: https://stackoverflow.com/a/4122317/7974948
-
-  }, {
-    key: "demoLogin",
-    value: function demoLogin(e) {
-      e.preventDefault();
-      window.location.hash = '#/login';
-      var username = 'demoUser'.split('');
-      var usernameInputField = $('.username-input-field');
-      this.fillUsername(true, usernameInputField, username);
-    } // --------------- demo login END --------------- //
-
+      return null;
+    }
   }, {
     key: "render",
     value: function render() {
@@ -399,22 +367,22 @@ function (_React$Component) {
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
-      }, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: this.state.username,
-        onChange: this.update('username'),
-        className: "session-textbox username-input-field"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        value: this.state.email,
+        onChange: this.update('email'),
+        className: "session-textbox"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "login-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderUsernameInput(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
       }, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
         value: this.state.password,
         onChange: this.update('password'),
-        className: "session-textbox password-input-field"
+        className: "session-textbox"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session-submit",
         onClick: this.handleSubmit
@@ -427,12 +395,7 @@ function (_React$Component) {
         className: "left"
       }), "OR", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "right"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-form-nav-button",
-        onClick: this.demoLogin
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "session-form-nav-button"
-      }, "demo login"))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.navLink)));
     }
   }]);
 
