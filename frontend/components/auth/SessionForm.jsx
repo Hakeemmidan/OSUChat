@@ -18,6 +18,13 @@ export class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
+    // Set the username to first part of email if there is no username
+    if (this.state.username.replace(/ /g, '') === '') {
+      this.setState({
+        username: this.state.email.split('@')[0]
+      })
+    }
+
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);

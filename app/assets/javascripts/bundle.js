@@ -312,6 +312,13 @@ function (_React$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
+      // Set the username to first part of email if there is no username
+      if (this.state.username.replace(/ /g, '') === '') {
+        this.setState({
+          username: this.state.email.split('@')[0]
+        });
+      }
+
       e.preventDefault();
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
