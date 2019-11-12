@@ -5,6 +5,7 @@ export class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,7 +44,7 @@ export class SessionForm extends React.Component {
           <input type="text"
             value={this.state.username}
             onChange={this.update('username')}
-            className="session-textbox username-input-field"
+            className="session-textbox"
           />
         </label>
       )
@@ -61,8 +62,21 @@ export class SessionForm extends React.Component {
             <br />
             Please {this.props.formType} to continue
             
-
             {this.renderErrors()}
+
+            <br/>
+
+            <label className="session-input-container">
+              Email
+                <br />
+              <input type="text"
+                value={this.state.email}
+                onChange={this.update('email')}
+                className="session-textbox"
+              />
+            </label>
+
+
             <div className="login-form">
               <br />
 
@@ -76,7 +90,7 @@ export class SessionForm extends React.Component {
                   <input type="password"
                     value={this.state.password}
                     onChange={this.update('password')}
-                    className="session-textbox password-input-field"
+                    className="session-textbox"
                   />
               </label>
 
