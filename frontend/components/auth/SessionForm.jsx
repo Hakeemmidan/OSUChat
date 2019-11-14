@@ -8,7 +8,9 @@ export class SessionForm extends React.Component {
       email: '',
       password: ''
     };
+    this.displayErrors = false;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
     this.handleSubmitWithDefaultUsername = this.handleSubmitWithDefaultUsername.bind(this);
   }
 
@@ -34,18 +36,23 @@ export class SessionForm extends React.Component {
   handleSubmitWithDefaultUsername() {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+    this.displayErrors = true;
   }
 
   renderErrors() {
-    return (
-      <ul className="session-errors-ul">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`} className="session-error">
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+    if (this.displayErrors) {
+      return (
+        <ul className="session-errors-ul">
+          {this.props.errors.map((error, i) => (
+            <li key={`error-${i}`} className="session-error">
+              {error}
+            </li>
+          ))}
+        </ul>
+      )
+    } else {
+      return null
+    };
   }
 
   renderUsernameInput() {
@@ -74,10 +81,10 @@ export class SessionForm extends React.Component {
             Welcome to OSUSCN!
             <br />
             Please {this.props.formType} to continue
-            
+
             {this.renderErrors()}
 
-            <br/>
+            <br />
 
             <label className="session-input-container">
               Email
@@ -98,13 +105,13 @@ export class SessionForm extends React.Component {
               <br />
 
               <label className="session-input-container">
-                  Password
-                  <br/>
-                  <input type="password"
-                    value={this.state.password}
-                    onChange={this.update('password')}
-                    className="session-textbox"
-                  />
+                Password
+                  <br />
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  className="session-textbox"
+                />
               </label>
 
               <br />
@@ -113,18 +120,18 @@ export class SessionForm extends React.Component {
                 <input type="submit" value={this.props.formType} />
               </div>
 
-              <br/>
+              <br />
             </div>
           </form>
 
           <div className="divider">
             <hr className="left" />
-              OR
+            OR
             <hr className="right" />
           </div>
           {/* ^^^ source: https://stackoverflow.com/a/2812819/7974948 */}
           <br />
-          
+
           <div>
             {this.props.navLink}
           </div>
