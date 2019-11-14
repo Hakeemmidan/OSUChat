@@ -1,6 +1,10 @@
 class User < ApplicationRecord
 
-  validates :username, :session_token, :email, presence: true, uniqueness: true
+  validates :username, :session_token, presence: true, uniqueness: true
+  validates :email, presence: true,
+            format: { with: /[a-zA-Z0-9_.+-]+@(oregonstate)\.edu/,
+                    message: "must have an @oregonstate.edu domain" },
+            uniqueness: true
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
