@@ -21,6 +21,7 @@ gem 'pry-rails'
 gem 'annotate'
 gem 'bcrypt'
 gem 'jquery-rails'
+gem 'delayed_job_active_record'
 gem "figaro"
 gem 'mailgun-ruby'
 gem 'jquery'

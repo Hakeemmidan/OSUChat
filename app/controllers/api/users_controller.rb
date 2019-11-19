@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      ExampleMailer.sample_email(@user).deliver_now
+      SendEmailJob.set(wait: 2.seconds).perform_later(@user)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
