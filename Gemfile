@@ -22,6 +22,7 @@ gem 'annotate'
 gem 'bcrypt'
 gem 'jquery-rails'
 gem "figaro"
+gem 'mailgun-ruby'
 gem 'jquery'
 gem 'turbolinks'
 gem 'rails-ujs'
