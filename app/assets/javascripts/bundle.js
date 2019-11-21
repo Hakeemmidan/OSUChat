@@ -489,10 +489,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var errors = _ref.errors;
+var mapStateToProps = function mapStateToProps(state) {
   return {
-    errors: errors.session,
+    errors: state.errors.session,
+    signupConfirmation: state.ui.confirmation.signupConfirmation,
     formType: 'signup',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
       className: "session-form-nav-button",
