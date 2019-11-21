@@ -788,6 +788,38 @@ var sessionReducer = function sessionReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/ui/confirmation_reducer.js":
+/*!******************************************************!*\
+  !*** ./frontend/reducers/ui/confirmation_reducer.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+var confirmationReducer = function confirmationReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["SIGNUP_CURRENT_USER"]:
+      return {
+        signupConfirmation: action.confirmationMsg[0]
+      };
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (confirmationReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/ui/ui_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/ui/ui_reducer.js ***!
@@ -798,7 +830,13 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "uiReducer", function() { return uiReducer; });
-var uiReducer = combineReducers({});
+/* harmony import */ var _confirmation_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./confirmation_reducer */ "./frontend/reducers/ui/confirmation_reducer.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+
+
+var uiReducer = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
+  confirmation: _confirmation_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+});
 
 /***/ }),
 
