@@ -162,9 +162,16 @@ header {
 // ------------------------ navbar buttons END ------------------------ //
 
 .session-error {
-  list-style-type: circle;
+  // This nesting gives bullet different color than text
   color: darkred;
+  background-color: darkred;
+  padding: 10px 4px;
+  &::first-line {
+    color: white;
+  }
 }
-.session-errors-ul {
-  margin-bottom: 5px;
+
+.session-signup-confirmation {
+  color: #9F6000;
+  background-color: #FEEFB3;
 }

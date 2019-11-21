@@ -138,3 +138,10 @@ The following will render under `NavBar`:
     - creates message
 - `DELETE /api/messages/:id` 
     - remove message
+
+
+
+
+# commands
+- `bundle exec rake jobs:work`
+  - send Active Job workings

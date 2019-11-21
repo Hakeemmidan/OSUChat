@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS } from '../../actions/session_actions';
 
 // keeps tracks of session-specific errors
 export const sessionErrorsReducer = (state = [], action) => {
