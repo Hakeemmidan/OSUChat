@@ -308,6 +308,7 @@ function (_React$Component) {
     _this.displayErrors = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
+    _this.renderSignupConfirmation = _this.renderSignupConfirmation.bind(_assertThisInitialized(_this));
     _this.handleSubmitWithDefaultUsername = _this.handleSubmitWithDefaultUsername.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -341,6 +342,18 @@ function (_React$Component) {
       var user = Object.assign({}, this.state);
       this.props.processForm(user);
       this.displayErrors = true;
+    }
+  }, {
+    key: "renderSignupConfirmation",
+    value: function renderSignupConfirmation() {
+      if (this.props.formType === 'signup' && this.props.signupConfirmation) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "signUpConfirmation",
+          className: "session-signup-confirmation"
+        }, this.props.signupConfirmation));
+      } else {
+        return null;
+      }
     }
   }, {
     key: "renderErrors",
@@ -385,7 +398,7 @@ function (_React$Component) {
         className: "login-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), this.renderSignupConfirmation(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
       }, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
