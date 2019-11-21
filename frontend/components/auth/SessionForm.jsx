@@ -9,6 +9,7 @@ export class SessionForm extends React.Component {
       password: ''
     };
     this.displayErrors = false;
+    this.displaySignupConfirmation = false;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.renderSignupConfirmation = this.renderSignupConfirmation.bind(this);
@@ -38,10 +39,11 @@ export class SessionForm extends React.Component {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
     this.displayErrors = true;
+    this.displaySignupConfirmation = true;
   }
 
   renderSignupConfirmation() {
-    if (this.props.formType === 'signup' && this.props.signupConfirmation) {
+    if (this.displaySignupConfirmation && this.props.formType === 'signup' && this.props.signupConfirmation) {
       return (
         <ul>
           <li key="signUpConfirmation" className="session-signup-confirmation">
@@ -57,7 +59,7 @@ export class SessionForm extends React.Component {
   renderErrors() {
     if (this.displayErrors) {
       return (
-        <ul className="session-errors-ul">
+        <ul>
           {this.props.errors.map((error, i) => (
             <li key={`error-${i}`} className="session-error">
               {error}
@@ -100,7 +102,9 @@ export class SessionForm extends React.Component {
             {this.renderErrors()}
             {this.renderSignupConfirmation()}
 
-            <br />
+            <br/>
+            <br/>
+
 
             <label className="session-input-container">
               Email
