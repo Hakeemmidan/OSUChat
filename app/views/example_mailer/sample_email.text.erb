@@ -1,2 +1,4 @@
 Hi <%= @user.username %>
 Sample mail sent using smtp.
+
+<%= confirm_email_user_url(@user.confirm_token) %>
