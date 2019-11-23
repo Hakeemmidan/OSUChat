@@ -10,6 +10,7 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   attr_reader :password
+  before_create :confirmation_token
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -33,6 +34,13 @@ class User < ApplicationRecord
   end
 
   private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+        self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end  
