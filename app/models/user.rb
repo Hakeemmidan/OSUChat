@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   validates :username, :session_token, presence: true, uniqueness: true
   validates :email, presence: true,
             format: { with: /[a-zA-Z0-9_.+-]+@(oregonstate)\.edu/,
