@@ -33,6 +33,12 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
   private
 
   def confirmation_token
