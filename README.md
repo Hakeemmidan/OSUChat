@@ -143,5 +143,5 @@ The following will render under `NavBar`:
 
 
 # commands
-- `bundle exec rake jobs:work`
+- `bundle exec rails jobs:work`
   - send Active Job workings
