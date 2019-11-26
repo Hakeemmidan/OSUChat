@@ -5,9 +5,6 @@
   </head>
   <body>
     <h1>Hi <%= @user.username %></h1>
-    <p>
-      Sample mail sent using smtp.
-    </p>
     <p>Please click on the following link to confirm your registeration:</p>
     <div><%= confirm_email_api_user_url(@user.confirm_token) %></div>
   </body>

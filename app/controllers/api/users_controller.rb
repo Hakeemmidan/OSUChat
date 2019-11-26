@@ -3,10 +3,6 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      if @user.email_confirmed
-        sign_in(@user)
-        render :show
-      else
         SendEmailJob.set(wait: 0.5.seconds).perform_later(@user.id)
         render json: ["Please check your email (#{@user.email})"]
       end
