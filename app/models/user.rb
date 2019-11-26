@@ -6,10 +6,12 @@ class User < ApplicationRecord
             uniqueness: true
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: { minimum: 6, allow_nil: true }
+
   after_initialize :ensure_session_token
+  before_create :confirmation_token
+  before_save :downcase_fields
 
   attr_reader :password
-  before_create :confirmation_token
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -36,6 +38,12 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)
+  end
+
+  def downcase_fields
+    debugger
+    self.username.downcase!
+    self.email.downcase!
   end
 
   private

@@ -5,7 +5,6 @@ class Api::UsersController < ApplicationController
     if @user.save
         SendEmailJob.set(wait: 0.5.seconds).perform_later(@user.id)
         render json: ["Please check your email (#{@user.email})"]
-      end
     else
       render json: @user.errors.full_messages, status: 422
     end
