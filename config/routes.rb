@@ -6,6 +6,9 @@ Rails.application.routes.draw do
         get :confirm_email
       end
     end
+    post 'password/forgot', to: 'password#forgot'
+    post 'password/reset', to: 'password#reset'
+    
     resource :session, only: [:create, :destroy]
   end
   
