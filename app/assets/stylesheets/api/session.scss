@@ -175,3 +175,13 @@ header {
   color: #9F6000;
   background-color: #FEEFB3;
 }
+
+.forgot-password-button {
+  cursor: pointer;
+  color: gray;
+  text-decoration: underline;
+}
+
+.forgot-password-button:hover {
+  opacity: 0.8;
+}

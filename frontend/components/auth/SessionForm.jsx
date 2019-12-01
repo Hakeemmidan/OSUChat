@@ -134,7 +134,12 @@ export class SessionForm extends React.Component {
                 />
               </label>
 
-              <br />
+              <br/>
+
+              <div className="forgot-password-button">
+                forgot password?
+              </div>
+              <br/>
 
               <div className="session-submit" onClick={this.handleSubmit}>
                 <input type="submit" value={this.props.formType} />
