@@ -1,7 +1,7 @@
 class Api::PasswordsController < ApplicationController
   def forgot
     if params[:email].blank?
-      return render json: {error: 'Email not present'}
+      return render json: ['Email not present'], status: :not_found
     end
 
     user = User.find_by(email: params[:email])
@@ -9,9 +9,9 @@ class Api::PasswordsController < ApplicationController
     if user.present?
       user.generate_password_token!
       ExampleMailer.forgot_password_email(user.id).deliver_now
-      render json: {status: 'ok'}, status: :ok
+      render json: ['Please check your email'], status: :ok
     else
-      render json: {error: ['Email address not found. Please check and try again.']}, status: :not_found
+      render json: ['Email address not found. Please check and try again.'], status: :not_found
     end
   end
 
