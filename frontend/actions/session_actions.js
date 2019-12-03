@@ -18,6 +18,11 @@ export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
 });
 
+export const receiveForgotPassword = (confirmationMsg) => ({
+  type: RECEIVE_FORGOT_PASSWORD,
+  confirmationMsg
+})
+
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
   errors
@@ -42,5 +47,13 @@ export const login = user => dispatch => (
 export const logout = () => dispatch => (
   APIUtil.logout().then(() => (
     dispatch(logoutCurrentUser())
+  ))
+);
+
+export const forgotPassword = (email) => dispatch => (
+  APIUtil.forgotPassword(email).then((confirmationMsg) => (
+    dispatch(receiveForgotPassword(confirmationMsg))
+  ), err => (
+      dispatch(receiveErrors(err.responseJSON))
   ))
 );

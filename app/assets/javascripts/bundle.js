@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, RECEIVE_ERRORS, LOGOUT_CURRENT_USER, SIGNUP_CURRENT_USER, receiveCurrentUser, signupCurrentUser, logoutCurrentUser, receiveErrors, signup, login, logout */
+/*! exports provided: RECEIVE_CURRENT_USER, RECEIVE_ERRORS, LOGOUT_CURRENT_USER, SIGNUP_CURRENT_USER, receiveCurrentUser, signupCurrentUser, logoutCurrentUser, receiveForgotPassword, receiveErrors, signup, login, logout, forgotPassword */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -149,10 +149,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signupCurrentUser", function() { return signupCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveForgotPassword", function() { return receiveForgotPassword; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signup", function() { return signup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "forgotPassword", function() { return forgotPassword; });
 /* harmony import */ var _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_api_util */ "./frontend/util/session_api_util.js");
 var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -174,6 +176,12 @@ var signupCurrentUser = function signupCurrentUser(confirmationMsg) {
 var logoutCurrentUser = function logoutCurrentUser() {
   return {
     type: LOGOUT_CURRENT_USER
+  };
+};
+var receiveForgotPassword = function receiveForgotPassword(confirmationMsg) {
+  return {
+    type: RECEIVE_FORGOT_PASSWORD,
+    confirmationMsg: confirmationMsg
   };
 };
 var receiveErrors = function receiveErrors(errors) {
@@ -204,6 +212,15 @@ var logout = function logout() {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["logout"]().then(function () {
       return dispatch(logoutCurrentUser());
+    });
+  };
+};
+var forgotPassword = function forgotPassword(email) {
+  return function (dispatch) {
+    return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["forgotPassword"](email).then(function (confirmationMsg) {
+      return dispatch(receiveForgotPassword(confirmationMsg));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
