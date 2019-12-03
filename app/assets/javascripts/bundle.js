@@ -246,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
 /* harmony import */ var _auth_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/signup_form_container */ "./frontend/components/auth/signup_form_container.js");
 /* harmony import */ var _auth_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/login_form_container */ "./frontend/components/auth/login_form_container.js");
-/* harmony import */ var _auth_ForgotPasswordForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/ForgotPasswordForm */ "./frontend/components/auth/ForgotPasswordForm.jsx");
+/* harmony import */ var _auth_forgot_password_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/forgot_password_form_container */ "./frontend/components/auth/forgot_password_form_container.js");
 
 
 
@@ -268,7 +268,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__["AuthRoute"], {
     exact: true,
     path: "/forgot-password",
-    component: _auth_ForgotPasswordForm__WEBPACK_IMPORTED_MODULE_6__["ForgotPasswordForm"]
+    component: _auth_forgot_password_form_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   })));
 };
 
@@ -366,7 +366,7 @@ function (_React$Component) {
 /*!**************************************************!*\
   !*** ./frontend/components/auth/SessionForm.jsx ***!
   \**************************************************/
-/*! exports provided: SessionForm, default */
+/*! exports provided: SessionForm */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -540,7 +540,41 @@ function (_React$Component) {
 
   return SessionForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-/* harmony default export */ __webpack_exports__["default"] = (SessionForm);
+
+/***/ }),
+
+/***/ "./frontend/components/auth/forgot_password_form_container.js":
+/*!********************************************************************!*\
+  !*** ./frontend/components/auth/forgot_password_form_container.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _ForgotPasswordForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ForgotPasswordForm */ "./frontend/components/auth/ForgotPasswordForm.jsx");
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    errors: state.errors.session,
+    forgotPasswordConfirmation: state.ui.confirmation.forgotPasswordConfirmation
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    forgotPassword: function forgotPassword(email) {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["forgotPassword"])(email));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_ForgotPasswordForm__WEBPACK_IMPORTED_MODULE_2__["ForgotPasswordForm"]));
 
 /***/ }),
 
@@ -588,7 +622,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SessionForm__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SessionForm__WEBPACK_IMPORTED_MODULE_4__["SessionForm"]));
 
 /***/ }),
 
@@ -636,7 +670,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SessionForm__WEBPACK_IMPORTED_MODULE_4__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SessionForm__WEBPACK_IMPORTED_MODULE_4__["SessionForm"]));
 
 /***/ }),
 
