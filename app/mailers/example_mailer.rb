@@ -8,8 +8,8 @@ class ExampleMailer < ApplicationMailer
         mail(to: @user.email, subject: 'Sample Email')
     end
 
-    def forgot_password_email(userId)
-        @user = User.find(userId)
+    def forgot_password_email(user)
+        @user = user
         return if @user.nil?
         
         mail(to: @user.email, subject: 'OSUSCN Password Reset 🔑')
