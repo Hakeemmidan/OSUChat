@@ -136,7 +136,7 @@ export class SessionForm extends React.Component {
 
               <br/>
 
-              <div className="forgot-password-button">
+              <div className="forgot-password-link">
                 forgot password?
               </div>
               <br/>
