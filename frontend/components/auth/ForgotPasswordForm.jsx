@@ -21,7 +21,7 @@ export class ForgotPasswordForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.forgotPassword(this.state);
+        this.props.forgotPassword(this.state.email);
         this.displayErrors = true;
         this.displayforgotPasswordConfirmation = true;
     }
@@ -81,7 +81,7 @@ export class ForgotPasswordForm extends React.Component {
                         </label>
 
                         <br/>
-                        
+
                         <div className="session-submit" onClick={this.handleSubmit}>
                             <input type="submit" value="Send password reset email" />
                         </div>

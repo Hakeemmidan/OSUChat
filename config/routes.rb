@@ -6,8 +6,8 @@ Rails.application.routes.draw do
         get :confirm_email
       end
     end
-    post 'password/forgot', to: 'password#forgot'
-    post 'password/reset', to: 'password#reset'
+    post 'passwords/forgot', to: 'passwords#forgot'
+    post 'passwords/reset', to: 'passwords#reset'
     
     resource :session, only: [:create, :destroy]
   end

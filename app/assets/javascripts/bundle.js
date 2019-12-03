@@ -342,7 +342,7 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
-      this.props.forgotPassword(this.state);
+      this.props.forgotPassword(this.state.email);
       this.displayErrors = true;
       this.displayforgotPasswordConfirmation = true;
     }
@@ -908,9 +908,6 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      return [];
-
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
       return action.errors;
 
@@ -1154,7 +1151,7 @@ var logout = function logout() {
 };
 var forgotPassword = function forgotPassword(email) {
   return $.ajax({
-    url: '/api/password/forgot',
+    url: '/api/passwords/forgot',
     method: 'POST',
     data: {
       email: email

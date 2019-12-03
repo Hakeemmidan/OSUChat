@@ -23,7 +23,7 @@ export const logout = () => {
 
 export const forgotPassword = (email) => {
   return $.ajax({
-    url: '/api/password/forgot',
+    url: '/api/passwords/forgot',
     method: 'POST',
     data: { email }
   });

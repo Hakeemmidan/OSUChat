@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class Api::PasswordsController < ApplicationController
   def forgot
     if params[:email].blank?
       return render json: {error: 'Email not present'}
@@ -31,7 +31,7 @@ class PasswordsController < ApplicationController
         render json: {error: user.errors.full_messages}, status: :unprocessable_entity
       end
     else
-      render json: {error:  [’Link not valid or expired. Try generating a new link.’]}, status: :not_found
+      render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
     end
   end
 end
