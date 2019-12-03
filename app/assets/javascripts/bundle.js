@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, RECEIVE_ERRORS, LOGOUT_CURRENT_USER, SIGNUP_CURRENT_USER, receiveCurrentUser, signupCurrentUser, logoutCurrentUser, receiveForgotPassword, receiveErrors, signup, login, logout, forgotPassword */
+/*! exports provided: RECEIVE_CURRENT_USER, RECEIVE_ERRORS, LOGOUT_CURRENT_USER, SIGNUP_CURRENT_USER, RECEIVE_FORGOT_PASSWORD, receiveCurrentUser, signupCurrentUser, logoutCurrentUser, receiveForgotPassword, receiveErrors, signup, login, logout, forgotPassword */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -146,6 +146,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGNUP_CURRENT_USER", function() { return SIGNUP_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_FORGOT_PASSWORD", function() { return RECEIVE_FORGOT_PASSWORD; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveCurrentUser", function() { return receiveCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signupCurrentUser", function() { return signupCurrentUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logoutCurrentUser", function() { return logoutCurrentUser; });
@@ -160,6 +161,7 @@ var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 var RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 var SIGNUP_CURRENT_USER = 'SIGNUP_CURRENT_USER';
+var RECEIVE_FORGOT_PASSWORD = 'RECEIVE_FORGOT_PASSWORD';
 
 var receiveCurrentUser = function receiveCurrentUser(currentUser) {
   return {
@@ -734,7 +736,6 @@ var sessionErrorsReducer = function sessionErrorsReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
       return action.errors;
-    // ^ question ) Where is this coming from?
 
     default:
       return state;
@@ -831,6 +832,11 @@ var confirmationReducer = function confirmationReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["SIGNUP_CURRENT_USER"]:
       return {
         signupConfirmation: action.confirmationMsg[0]
+      };
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_FORGOT_PASSWORD"]:
+      return {
+        forgotPasswordConfirmation: action.confirmationMsg[0]
       };
 
     default:

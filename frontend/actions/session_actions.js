@@ -2,6 +2,7 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const SIGNUP_CURRENT_USER = 'SIGNUP_CURRENT_USER';
+export const RECEIVE_FORGOT_PASSWORD = 'RECEIVE_FORGOT_PASSWORD';
 import * as APIUtil from '../util/session_api_util';
 
 export const receiveCurrentUser = (currentUser) => ({
@@ -21,7 +22,7 @@ export const logoutCurrentUser = () => ({
 export const receiveForgotPassword = (confirmationMsg) => ({
   type: RECEIVE_FORGOT_PASSWORD,
   confirmationMsg
-})
+});
 
 export const receiveErrors = errors => ({
   type: RECEIVE_ERRORS,
@@ -54,6 +55,6 @@ export const forgotPassword = (email) => dispatch => (
   APIUtil.forgotPassword(email).then((confirmationMsg) => (
     dispatch(receiveForgotPassword(confirmationMsg))
   ), err => (
-      dispatch(receiveErrors(err.responseJSON))
+    dispatch(receiveErrors(err.responseJSON))
   ))
 );
