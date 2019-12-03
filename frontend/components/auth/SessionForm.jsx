@@ -92,8 +92,8 @@ export class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <div className="login-form-box">
+      <div className="session-form-container">
+        <div className="session-form-box">
           <form onSubmit={this.handleSubmit}>
             Welcome to OSUSCN!
             <br />
