@@ -20,3 +20,11 @@ export const logout = () => {
     method: 'DELETE'
   });
 };
+
+export const forgotPassword = (email) => {
+  return $.ajax({
+    url: '/api/password/forgot',
+    method: 'POST',
+    data: { email }
+  });
+};
