@@ -321,7 +321,11 @@ function (_React$Component) {
     _this.state = {
       email: ''
     };
+    _this.displayErrors = false;
+    _this.displayforgotPasswordConfirmation = false;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.renderErrors = _this.renderErrors.bind(_assertThisInitialized(_this));
+    _this.renderforgotPasswordConfirmation = _this.renderforgotPasswordConfirmation.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -336,7 +340,40 @@ function (_React$Component) {
     }
   }, {
     key: "handleSubmit",
-    value: function handleSubmit() {}
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.forgotPassword(this.state);
+      this.displayErrors = true;
+      this.displayforgotPasswordConfirmation = true;
+    }
+  }, {
+    key: "renderforgotPasswordConfirmation",
+    value: function renderforgotPasswordConfirmation() {
+      if (this.displayforgotPasswordConfirmation && this.props.forgotPasswordConfirmation) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "forgotPasswordConfirmation",
+          className: "session-confirmation"
+        }, this.props.forgotPasswordConfirmation));
+      } else {
+        return null;
+      }
+    }
+  }, {
+    key: "renderErrors",
+    value: function renderErrors() {
+      if (this.displayErrors) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: "error-".concat(i),
+            className: "session-error"
+          }, error);
+        }));
+      } else {
+        return null;
+      }
+
+      ;
+    }
   }, {
     key: "render",
     value: function render() {
@@ -346,13 +383,19 @@ function (_React$Component) {
         className: "session-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Please enter your email to reset your password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors(), this.renderforgotPasswordConfirmation(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
       }, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.email,
         onChange: this.update('email'),
         className: "session-textbox"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "session-submit",
+        onClick: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Send password reset email"
       })))));
     }
   }]);
@@ -457,7 +500,7 @@ function (_React$Component) {
       if (this.displaySignupConfirmation && this.props.formType === 'signup' && this.props.signupConfirmation) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "signUpConfirmation",
-          className: "session-signup-confirmation"
+          className: "session-confirmation"
         }, this.props.signupConfirmation));
       } else {
         return null;

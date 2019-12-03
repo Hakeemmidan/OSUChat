@@ -46,7 +46,7 @@ export class SessionForm extends React.Component {
     if (this.displaySignupConfirmation && this.props.formType === 'signup' && this.props.signupConfirmation) {
       return (
         <ul>
-          <li key="signUpConfirmation" className="session-signup-confirmation">
+          <li key="signUpConfirmation" className="session-confirmation">
             {this.props.signupConfirmation}
           </li>
         </ul>
@@ -96,7 +96,9 @@ export class SessionForm extends React.Component {
         <div className="session-form-box">
           <form onSubmit={this.handleSubmit}>
             Welcome to OSUSCN!
+
             <br />
+
             Please {this.props.formType} to continue
 
             {this.renderErrors()}
@@ -119,9 +121,7 @@ export class SessionForm extends React.Component {
 
             <div className="login-form">
               <br />
-
               {this.renderUsernameInput()}
-
               <br />
 
               <label className="session-input-container">
