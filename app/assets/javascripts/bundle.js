@@ -383,7 +383,7 @@ function (_React$Component) {
         className: "session-form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, "Please enter your email to reset your password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors(), this.renderforgotPasswordConfirmation(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Please enter your email to reset your password:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderforgotPasswordConfirmation(), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session-input-container"
       }, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -908,14 +908,16 @@ __webpack_require__.r(__webpack_exports__);
 var sessionErrorsReducer = function sessionErrorsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // return nothing if we hit default case
+
+  var noErrors = [];
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
       return action.errors;
 
     default:
-      return state;
+      return noErrors;
   }
 };
 
@@ -1003,7 +1005,9 @@ __webpack_require__.r(__webpack_exports__);
 var confirmationReducer = function confirmationReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
+  Object.freeze(state); // return nothing if we hit default case
+
+  var noConf = {};
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["SIGNUP_CURRENT_USER"]:
@@ -1017,7 +1021,7 @@ var confirmationReducer = function confirmationReducer() {
       };
 
     default:
-      return state;
+      return noConf;
   }
 };
 

@@ -65,8 +65,8 @@ export class ForgotPasswordForm extends React.Component {
 
                         <br/>
 
-                        {this.renderErrors()}
                         {this.renderforgotPasswordConfirmation()}
+                        {this.renderErrors()}
 
                         <br/>
 
