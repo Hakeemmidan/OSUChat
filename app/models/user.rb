@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
-  before_create :confirmation_token
+  before_create :ensure_confirmation_token
   before_save :downcase_fields
 
   attr_reader :password
@@ -67,10 +67,8 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64.to_s
   end
 
-  def confirmation_token
-    if self.confirm_token.blank?
-        self.confirm_token = SecureRandom.urlsafe_base64.to_s
-    end
+  def ensure_confirmation_token
+    self.confirm_token ||= SecureRandom.urlsafe_base64(16)
   end
 
   def ensure_session_token

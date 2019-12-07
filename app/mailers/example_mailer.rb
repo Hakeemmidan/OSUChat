@@ -5,7 +5,7 @@ class ExampleMailer < ApplicationMailer
         @user = User.find(userId)
         return if @user.nil?
         
-        mail(to: @user.email, subject: 'Sample Email')
+        mail(to: @user.email, subject: 'OSUSCN Email Confirmation 🍊')
     end
 
     def forgot_password_email(user)
