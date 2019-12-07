@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export class SessionForm extends React.Component {
   constructor(props) {
@@ -136,9 +137,12 @@ export class SessionForm extends React.Component {
 
               <br/>
 
-              <div className="forgot-password-link">
+              <Link
+                to="/forgot-password"
+                className="forgot-password-link">
                 forgot password?
-              </div>
+              </Link>
+              <br/>
               <br/>
 
               <div className="session-submit" onClick={this.handleSubmit}>
