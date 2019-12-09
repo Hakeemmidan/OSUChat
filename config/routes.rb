@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show] do
       member do
         get :confirm_email
-        get :confirm_pass_token
+        get :new_pass_form
       end
     end
     post 'passwords/forgot', to: 'passwords#forgot'

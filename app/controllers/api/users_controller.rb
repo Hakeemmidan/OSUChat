@@ -21,8 +21,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def confirm_pass_token
-    debugger
+  def new_pass_form
+    user = User.find_by_reset_password_token(params[:id])
+    if user && user.password_token_valid?
+      
+    end
   end
 
   private
