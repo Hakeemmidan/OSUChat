@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       end
     end
     post 'passwords/forgot', to: 'passwords#forgot'
-    post 'passwords/reset', to: 'passwords#reset'
+    post 'passwords/:token/reset', to: 'passwords#reset'
     
     resource :session, only: [:create, :destroy]
   end

@@ -18,8 +18,8 @@ class Api::PasswordsController < ApplicationController
   def reset
     token = params[:token].to_s
 
-    if params[:email].blank?
-      return render json: {error: 'Token not present'}
+    if params[:token].blank?
+      return render plain: {error: 'Something unexpected happened. '}
     end
 
     user = User.find_by(reset_password_token: token)
@@ -33,5 +33,11 @@ class Api::PasswordsController < ApplicationController
     else
       render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
     end
+  end
+
+  private
+
+  def password_params
+    params.permit(:token, :password)
   end
 end
