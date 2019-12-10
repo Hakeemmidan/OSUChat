@@ -1,4 +1,4 @@
-<% if @password_valid %>
+<% if @link_valid %>
     <h1>OSUSCN Password Reset</h1>
     <form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

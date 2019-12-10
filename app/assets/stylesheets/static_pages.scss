@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .logo {
-  font-size: 7vh;
+  font-size: calc(40px + 1vw);
   text-decoration: none; 
   color: grey;
   // task: this needs to be more dynamic

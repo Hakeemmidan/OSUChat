@@ -1,0 +1,25 @@
+<% debugger %>
+
+<% if @no_token %>
+    <div class="u-horizontally-center-text u-large-margin-top">
+        <h1>
+            Something unexpected happened. Please try resetting your password again.
+            <br>
+            If that doesn't work. Please contact me at hakeemmidan@gmail.com and we'll see what is going on.
+        </h1>
+    </div>
+<% elsif @link_valid && @no_errors %>
+    <div class="u-horizontally-center-text u-large-margin-top">
+        <h1>
+            Password reset successfully
+        </h1>
+        <p class="home-link">
+            Go to home page
+        </p>
+        <script>
+            $('.home-link').click( () => {
+                location.href = location.origin;
+            });
+        </script>
+    </div>
+<% end %>

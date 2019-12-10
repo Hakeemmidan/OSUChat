@@ -19,12 +19,8 @@ class Api::PasswordsController < ApplicationController
     token = params[:token].to_s
 
     if params[:token].blank?
-      return render html: 
-          "<h1 class='u-horizontally-center-text'>
-            Something unexpected happened. Please try resetting your password again.
-            <br/>
-            If that doesn't work. Please contact me at hakeemmidan@gmail.com and we'll see what is going on.
-          </h1>"
+      @no_token = true
+      return
     end
 
     user = User.find_by(reset_password_token: token)
@@ -32,10 +28,15 @@ class Api::PasswordsController < ApplicationController
     if user.present? && user.password_token_valid?
       if user.reset_password!(params[:password])
         render json: {status: 'ok'}, status: :ok
+        @link_valid = true
+        @no_errors = true
       else
-        render json: {error: user.errors.full_messages}, status: :unprocessable_entity
+        @link_valid = true
+        @no_errors = false
+        flash[:error] = user.errors.full_messages
       end
     else
+      @link_valid = false
       render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
     end
   end
