@@ -1,10 +1,18 @@
-<h1>OSUSCN Password Reset</h1>
-<form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label for="password">
-        Enter new password:
-        <br>
-        <input type="password" name="password">
-    </label>
-    <input type="submit" value="submit change">
-</form>
+<% if @password_valid %>
+    <h1>OSUSCN Password Reset</h1>
+    <form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <label for="password">
+            Enter new password:
+            <br>
+            <input type="password" name="password">
+        </label>
+        <input type="submit" value="submit change">
+    </form>
+<% else %>
+    <div class="u-horizontally-center-text u-large-margin-top">
+        <h1>
+            Link not valid or expired. Try generating a new link.
+        </h1>
+    </div>
+<% end %>

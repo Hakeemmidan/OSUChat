@@ -23,13 +23,11 @@ class Api::UsersController < ApplicationController
 
   def new_pass_form
     user = User.find_by_reset_password_token(params[:id])
+    
     if user && user.password_token_valid?
-      render "new_pass_form"
+      @link_valid = true
     else
-      render html: 
-          '<h1 class="u-horizontally-center-text">
-            Link not valid or expired. Try generating a new link.
-          </h1>'
+      @link_valid = false
     end
   end
 

@@ -19,7 +19,12 @@ class Api::PasswordsController < ApplicationController
     token = params[:token].to_s
 
     if params[:token].blank?
-      return render plain: {error: 'Something unexpected happened. '}
+      return render html: 
+          "<h1 class='u-horizontally-center-text'>
+            Something unexpected happened. Please try resetting your password again.
+            <br/>
+            If that doesn't work. Please contact me at hakeemmidan@gmail.com and we'll see what is going on.
+          </h1>"
     end
 
     user = User.find_by(reset_password_token: token)
