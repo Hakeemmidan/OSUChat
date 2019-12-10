@@ -24,5 +24,10 @@
   
   <body>
     <%= yield %>
+    <script>
+      $('.home-link').click( () => {
+          location.href = location.origin;
+      });
+    </script>
   </body>
 </html>

@@ -24,20 +24,16 @@ class Api::PasswordsController < ApplicationController
     end
 
     user = User.find_by(reset_password_token: token)
-
+    
     if user.present? && user.password_token_valid?
       if user.reset_password!(params[:password])
-        render json: {status: 'ok'}, status: :ok
         @link_valid = true
-        @no_errors = true
       else
-        @link_valid = true
-        @no_errors = false
-        flash[:error] = user.errors.full_messages
+        flash[:errors] = user.errors.full_messages
+        redirect_to new_pass_form_api_user_url(token)
       end
     else
       @link_valid = false
-      render json: {error:  ['Link not valid or expired. Try generating a new link.']}, status: :not_found
     end
   end
 

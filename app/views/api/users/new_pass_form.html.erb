@@ -1,5 +1,14 @@
 <% if @link_valid %>
     <h1>OSUSCN Password Reset</h1>
+
+    <% if flash[:errors] %>
+        <ul style="color:orange;">
+            <% flash[:errors].each do |err| %>
+                <li> <%= err %> </li>
+            <% end %>    
+        </ul>
+    <% end %>
+
     <form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <label for="password">
@@ -14,5 +23,8 @@
         <h1>
             Link not valid or expired. Try generating a new link.
         </h1>
+        <p class="home-link">
+            Go to home page
+        </p>
     </div>
 <% end %>

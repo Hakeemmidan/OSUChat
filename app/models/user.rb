@@ -5,7 +5,7 @@ class User < ApplicationRecord
                     message: "must have an @oregonstate.edu domain" },
             uniqueness: true
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
   before_create :ensure_confirmation_token
@@ -56,9 +56,13 @@ class User < ApplicationRecord
   end
 
   def reset_password!(password)
-    self.reset_password_token = nil
     self.password = password
-    save!
+    if save
+      self.reset_password_token = nil
+      true
+    else
+      nil
+    end
   end
 
   private
