@@ -48,7 +48,7 @@ class User < ApplicationRecord
   def generate_password_token!
     self.reset_password_token = password_reset_token
     self.reset_password_sent_at = Time.now.utc
-    save!
+    save!(:validate => false)
   end
 
   def password_token_valid?
