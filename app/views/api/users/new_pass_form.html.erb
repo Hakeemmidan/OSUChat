@@ -1,30 +1,35 @@
 <% if @link_valid %>
-    <h1>OSUSCN Password Reset</h1>
-
-    <% if flash[:errors] %>
-        <ul style="color:orange;">
-            <% flash[:errors].each do |err| %>
-                <li> <%= err %> </li>
-            <% end %>    
-        </ul>
-    <% end %>
-
-    <form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <label for="password">
-            Enter new password:
-            <br>
-            <input type="password" name="password">
-        </label>
-        <input type="submit" value="submit change">
-    </form>
-<% else %>
-    <div class="u-horizontally-center-text u-large-margin-top">
-        <h1>
-            Link not valid or expired. Try generating a new link.
-        </h1>
-        <p class="home-link">
-            Go to home page
-        </p>
+  <div class="u-horizontally-center-text u-large-margin-top">
+    <div class="session-form-container">
+      <div class="session-form-box">
+          <h1>OSUSCN Password Reset</h1>
+          <% if flash[:errors] %>
+              <ul style="color:orange;">
+                  <% flash[:errors].each do |err| %>
+                      <li> <%= err %> </li>
+                  <% end %>    
+              </ul>
+          <% end %>
+        <form action="/api/passwords/<%=params[:id]%>/reset" method="POST">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <label for="password">
+                Enter new password:
+                <br>
+                <input type="password" name="password" class="session-textbox">
+                <br>
+            </label>
+            <input type="submit" class="session-submit" value="submit change">
+        </form>
+      </div>
     </div>
+  </div>
+<% else %>
+  <div class="u-horizontally-center-text u-large-margin-top">
+      <h1>
+          Link not valid or expired. Try generating a new link.
+      </h1>
+      <p class="home-link">
+          Go to home page
+      </p>
+  </div>
 <% end %>
