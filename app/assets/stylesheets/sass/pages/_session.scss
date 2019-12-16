@@ -1,4 +1,3 @@
-// ------------------------ header START ------------------------ //
 header {
   display: flex;
   justify-content: space-around;
@@ -6,9 +5,7 @@ header {
   height: 10vh;
   border-bottom: 1px solid grey;
 }
-// ------------------------ header END ------------------------ //
 
-// ------------------------ session form styling START ------------------------ //
 .session-form-box {
   border: 1px solid grey;
   width: 33%;
@@ -112,7 +109,6 @@ header {
   opacity: 0.8;
 }
 
-// ------- session 'OR' START------- //
 .divider {
 	width:100%;
 	text-align:center;
@@ -126,17 +122,13 @@ header {
 }
 
 .left {
-	float:left;
+	float: left;
 }
 
 .right {
-	float:right;
+	float: right;
 }
-// source: https://stackoverflow.com/a/2812819/7974948
-// ------- session 'OR' END------- //
 
-// ------------------------ session form styling END ------------------------ //
-// ------------------------ navbar buttons START------------------------ //
 .login-navbar-button {
   border: 1px solid grey;
   padding-right: 2vh;
@@ -180,8 +172,6 @@ header {
 .register-navbar-button:hover {
   text-decoration: underline;
 }
-
-// ------------------------ navbar buttons END ------------------------ //
 
 .home-link {
   color: #15c;
