@@ -1,15 +1,15 @@
 class User < ApplicationRecord
-  validates :username, :session_token, presence: true, uniqueness: true
+  validates :username, :session_token, presence: true, uniqueness: true,
+            case_sensitive: false
   validates :email, presence: true,
             format: { with: /[a-zA-Z0-9_.+-]+@(oregonstate)\.edu/,
                     message: "must have an @oregonstate.edu domain" },
-            uniqueness: true
+            uniqueness: true, case_sensitive: false
   validates :password_digest, presence: { message: 'Password can\'t be blank' }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
   before_create :ensure_confirmation_token
-  before_save :downcase_fields
 
   attr_reader :password
 
@@ -38,11 +38,6 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!(:validate => false)
-  end
-
-  def downcase_fields
-    self.username.downcase!
-    self.email.downcase!
   end
 
   def generate_password_token!
