@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
   before_create :ensure_confirmation_token
+  before_save :downcase_fields
 
   attr_reader :password
 
@@ -17,6 +18,11 @@ class User < ApplicationRecord
     user = User.find_by(email: email)
     return nil unless user && user.valid_password?(password)
     user
+  end
+
+  def downcase_fields
+    self.username.downcase!
+    self.email.downcase!
   end
 
   def password=(password)
