@@ -1,4 +1,4 @@
-class ExampleMailer < ApplicationMailer
+class UserMailer < ApplicationMailer
     default from: "hakeemmidan@gmail.com"
 
     def sample_email(userId)

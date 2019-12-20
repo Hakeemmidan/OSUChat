@@ -4,6 +4,6 @@ class SendEmailJob < ApplicationJob
   def perform(userId)
     return if userId.nil?
 
-    ExampleMailer.sample_email(userId).deliver_later
+    UserMailer.sample_email(userId).deliver_later
   end
 end
