@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
     default from: "hakeemmidan@gmail.com"
 
-    def sample_email(userId)
+    def confirmation_email(userId)
         @user = User.find(userId)
         return if @user.nil?
         
