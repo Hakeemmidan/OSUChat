@@ -8,8 +8,4 @@
 
 
 
-puts '# => Seeding started'
-
-User.create(username: 'demoUser', password: '12345678')
-
-puts '# => Seeding finished'
+puts 'There is currently nothing in the seeds file'
