@@ -82,7 +82,7 @@ export class ForgotPasswordForm extends React.Component {
 
                         <br/>
 
-                        <div className="session-submit" onClick={this.handleSubmit}>
+                        <div className="btn--session-submit" onClick={this.handleSubmit}>
                             <input type="submit" value="Send password reset email" />
                         </div>
                     </form>

@@ -145,7 +145,7 @@ export class SessionForm extends React.Component {
               <br/>
               <br/>
 
-              <div className="session-submit" onClick={this.handleSubmit}>
+              <div className="btn--session-submit" onClick={this.handleSubmit}>
                 <input type="submit" value={this.props.formType} />
               </div>
 
