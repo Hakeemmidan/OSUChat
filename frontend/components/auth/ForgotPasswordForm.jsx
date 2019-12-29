@@ -53,7 +53,7 @@ export class ForgotPasswordForm extends React.Component {
             )
         } else {
             return null
-        };
+        }
     }
 
     render() {
