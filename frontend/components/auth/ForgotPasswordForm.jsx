@@ -30,7 +30,7 @@ export class ForgotPasswordForm extends React.Component {
         if (this.displayforgotPasswordConfirmation && this.props.forgotPasswordConfirmation) {
             return (
                 <ul>
-                    <li key="forgotPasswordConfirmation" className="session-confirmation">
+                    <li key="forgotPasswordConfirmation" className="session__msg--confirmation">
                         {this.props.forgotPasswordConfirmation}
                     </li>
                 </ul>
@@ -45,7 +45,7 @@ export class ForgotPasswordForm extends React.Component {
             return (
                 <ul>
                     {this.props.errors.map((error, i) => (
-                        <li key={`error-${i}`} className="session-error">
+                        <li key={`error-${i}`} className="session__msg--error">
                             {error}
                         </li>
                     ))}
@@ -82,7 +82,7 @@ export class ForgotPasswordForm extends React.Component {
 
                         <br/>
 
-                        <div className="btn--session-submit" onClick={this.handleSubmit}>
+                        <div className="session__btn--submit" onClick={this.handleSubmit}>
                             <input type="submit" value="Send password reset email" />
                         </div>
                     </form>

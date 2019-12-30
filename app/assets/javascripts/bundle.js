@@ -357,7 +357,7 @@ function (_React$Component) {
       if (this.displayforgotPasswordConfirmation && this.props.forgotPasswordConfirmation) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "forgotPasswordConfirmation",
-          className: "session-confirmation"
+          className: "session__msg--confirmation"
         }, this.props.forgotPasswordConfirmation));
       } else {
         return null;
@@ -370,7 +370,7 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             key: "error-".concat(i),
-            className: "session-error"
+            className: "session__msg--error"
           }, error);
         }));
       } else {
@@ -394,7 +394,7 @@ function (_React$Component) {
         onChange: this.update('email'),
         className: "session__textbox"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn--session-submit",
+        className: "session__btn--submit",
         onClick: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -570,7 +570,7 @@ function (_React$Component) {
         to: "/forgot-password",
         className: "session__link"
       }, "forgot password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "btn--session-submit",
+        className: "session__btn--submit",
         onClick: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
@@ -652,7 +652,7 @@ var mapStateToProps = function mapStateToProps(_ref) {
     errors: errors.session,
     formType: 'login',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      className: "btn--session-form-nav",
+      className: "session__btn--nav",
       to: "/signup"
     }, "Register")
   };
@@ -700,7 +700,7 @@ var mapStateToProps = function mapStateToProps(state) {
     signupConfirmation: state.ui.confirmation.signupConfirmation,
     formType: 'signup',
     navLink: react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-      className: "btn--session-form-nav",
+      className: "session__btn--nav",
       to: "/login"
     }, "log in")
   };
@@ -31027,7 +31027,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

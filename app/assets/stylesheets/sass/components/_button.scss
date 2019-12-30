@@ -1,4 +1,4 @@
-.btn {
+.session__btn {
   all: initial;
   * {
     all: unset;
@@ -16,16 +16,16 @@
   margin: 7px;
   text-align: center;
 
-  &--session-form-nav {
-    @extend .btn;
+  &--nav {
+    @extend .session__btn;
     color: black;
     &:hover {
       background-color: rgb(247, 247, 247)
     }
   }
 
-  &--session-submit {
-    @extend .btn;
+  &--submit {
+    @extend .session__btn;
     color: white;
     background-color: black;
     &:hover {
