@@ -47,7 +47,7 @@ export class SessionForm extends React.Component {
     if (this.displaySignupConfirmation && this.props.formType === 'signup' && this.props.signupConfirmation) {
       return (
         <ul>
-          <li key="signUpConfirmation" className="session-confirmation">
+          <li key="signUpConfirmation" className="session__msg--confirmation">
             {this.props.signupConfirmation}
           </li>
         </ul>
@@ -62,7 +62,7 @@ export class SessionForm extends React.Component {
       return (
         <ul>
           {this.props.errors.map((error, i) => (
-            <li key={`error-${i}`} className="session-error">
+            <li key={`error-${i}`} className="session__msg--error">
               {error}
             </li>
           ))}
@@ -76,13 +76,13 @@ export class SessionForm extends React.Component {
   renderUsernameInput() {
     if (this.props.formType === 'signup') {
       return (
-        <label className="session-input-container">
+        <label className="session__input-container">
           Username
           <br />
           <input type="text"
             value={this.state.username}
             onChange={this.update('username')}
-            className="session-textbox"
+            className="session__textbox"
           />
         </label>
       )
@@ -93,8 +93,8 @@ export class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-form-container">
-        <div className="session-form-box">
+      <div className="session__form-container">
+        <div className="session__form-box">
           <form onSubmit={this.handleSubmit}>
             Welcome to OSUSCN!
 
@@ -109,29 +109,29 @@ export class SessionForm extends React.Component {
             <br/>
 
 
-            <label className="session-input-container">
+            <label className="session__input-container">
               Email
                 <br />
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                className="session-textbox"
+                className="session__textbox"
               />
             </label>
 
 
-            <div className="login-form">
+            <div>
               <br />
               {this.renderUsernameInput()}
               <br />
 
-              <label className="session-input-container">
+              <label className="session__input-container">
                 Password
                   <br />
                 <input type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
-                  className="session-textbox"
+                  className="session__textbox"
                 />
               </label>
 
@@ -139,7 +139,7 @@ export class SessionForm extends React.Component {
 
               <Link
                 to="/forgot-password"
-                className="forgot-password-link">
+                className="session__link">
                 forgot password?
               </Link>
               <br/>
@@ -154,9 +154,9 @@ export class SessionForm extends React.Component {
           </form>
 
           <div className="divider">
-            <hr className="left" />
+            <hr className="session__or-instruction--left" />
             OR
-            <hr className="right" />
+            <hr className="session__or-instruction--right" />
           </div>
           {/* ^^^ source: https://stackoverflow.com/a/2812819/7974948 */}
           <br />

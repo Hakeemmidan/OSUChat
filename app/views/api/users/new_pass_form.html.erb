@@ -1,7 +1,7 @@
 <% if @link_valid %>
   <div class="u-horizontally-center-text u-large-margin-top">
-    <div class="session-form-container">
-      <div class="session-form-box">
+    <div class="session__form-container">
+      <div class="session__form-box">
           <h1>OSUSCN Password Reset</h1>
           <% if flash[:errors] %>
               <ul style="color:orange;">
@@ -15,7 +15,7 @@
             <label for="password">
                 Enter new password:
                 <br>
-                <input type="password" name="password" class="session-textbox">
+                <input type="password" name="password" class="session__textbox">
                 <br>
             </label>
             <input type="submit" class="btn--session-submit" value="submit change">

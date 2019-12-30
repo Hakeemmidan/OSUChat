@@ -58,8 +58,8 @@ export class ForgotPasswordForm extends React.Component {
 
     render() {
         return (
-            <div className="session-form-container">
-                <div className="session-form-box">
+            <div className="session__form-container">
+                <div className="session__form-box">
                     <form onSubmit={this.handleSubmit}>
                         Please enter your email to reset your password:
 
@@ -70,13 +70,13 @@ export class ForgotPasswordForm extends React.Component {
 
                         <br/>
 
-                        <label className="session-input-container">
+                        <label className="session__input-container">
                             Email
                             <br />
                             <input type="text"
                                 value={this.state.email}
                                 onChange={this.update('email')}
-                                className="session-textbox"
+                                className="session__textbox"
                             />
                         </label>
 

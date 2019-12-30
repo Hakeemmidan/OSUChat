@@ -6,7 +6,7 @@ header {
   border-bottom: 1px solid grey;
 }
 
-.session-form-box {
+.session__form-box {
   border: 1px solid grey;
   width: 33%;
   padding-right: 7vh;
@@ -15,13 +15,13 @@ header {
   padding-bottom: 10vh;
 }
 
-.session-form-container {
+.session__form-container {
   padding-top: 4vh;
   display: flex;
   justify-content: center;
 }
 
-.session-textbox {
+.session__textbox {
   width: 90%;
   display: block;
   height: 48px;
@@ -36,29 +36,30 @@ header {
   max-width: 100%;
 }
 
-.session-error {
-  // This nesting gives bullet different color than text
-  color: darkred;
-  background-color: darkred;
-  padding: 10px 4px;
-  &::first-line {
-    color: white;
+.session__msg {
+  &--confirmation {
+    color: #9F6000;
+    background-color: #FEEFB3;
+  }
+  
+  &--error {
+    // This nesting gives bullet different color than text
+    color: darkred;
+    background-color: darkred;
+    padding: 10px 4px;
+    &::first-line {
+      color: white;
+    }
   }
 }
 
-.session-confirmation {
-  color: #9F6000;
-  background-color: #FEEFB3;
-}
-
-.forgot-password-link {
+.session__link {
   cursor: pointer;
   color: gray;
   text-decoration: underline;
-}
-
-.forgot-password-link:hover {
-  opacity: 0.8;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .divider {
@@ -73,12 +74,14 @@ header {
   color: lightgrey;
 }
 
-.left {
-	float: left;
-}
-
-.right {
-	float: right;
+.session__or-instruction {
+	&--left {
+    float: left;
+  }
+  
+  &--right {
+	  float: right;
+  }
 }
 
 .login-navbar-button {
