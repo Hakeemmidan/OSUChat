@@ -1,3 +1,29 @@
+.header__btn {
+  padding: 0 2vh;
+  text-decoration: none;
+
+  &--login {
+    @extend .header__btn;
+    border: 1px solid grey;
+    padding-top: 1.3vh;
+    padding-bottom: 1.3vh;
+    border-radius: 7px;
+    color: black;
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  &--register {
+    @extend .header__btn;
+    color: black;
+    &:hover {
+      text-decoration: underline;    
+    }
+  }
+}
+
 .session__btn {
   all: initial;
   * {

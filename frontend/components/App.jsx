@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthRoute } from '../util/route_util';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import HeaderContainer from './header/header_container';
 import SignUpFormContainer from './auth/signup_form_container';
 import LogInFormContainer from './auth/login_form_container';

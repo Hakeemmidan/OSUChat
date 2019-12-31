@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Header = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav>
-      <Link to="/signup" className="register-navbar-button">Register</Link>
-      <Link to="/login" className="login-navbar-button">Login</Link>
+      <Link to="/signup" className="header__btn--register">Register</Link>
+      <Link to="/login" className="header__btn--login">Login</Link>
     </nav>
   );
   const personalGreeting = () => (
