@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HeaderRight = ({ currentUser, logout }) => {
+const Header = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav>
       <Link to="/signup" className="register-navbar-button">Register</Link>
@@ -19,7 +19,12 @@ const HeaderRight = ({ currentUser, logout }) => {
     </nav>
   );
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return (
+    <header>
+      <Link to="/" className="logo"> OSUSCN </Link>
+      { currentUser ? personalGreeting() : sessionLinks() }
+    </header>
+  )
 };
 
-export default HeaderRight
+export default Header

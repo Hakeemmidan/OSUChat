@@ -1,4 +1,4 @@
-import HeaderRight from './HeaderRight';
+import Header from './Header';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HeaderRight);
+)(Header);
