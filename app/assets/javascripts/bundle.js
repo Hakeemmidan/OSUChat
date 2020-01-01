@@ -243,7 +243,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./greeting/greeting_container */ "./frontend/components/greeting/greeting_container.jsx");
+/* harmony import */ var _header_header_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./header/header_container */ "./frontend/components/header/header_container.jsx");
 /* harmony import */ var _auth_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/signup_form_container */ "./frontend/components/auth/signup_form_container.js");
 /* harmony import */ var _auth_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/login_form_container */ "./frontend/components/auth/login_form_container.js");
 /* harmony import */ var _auth_forgot_password_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/forgot_password_form_container */ "./frontend/components/auth/forgot_password_form_container.js");
@@ -255,10 +255,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "/",
-    className: "logo"
-  }, " OSUSCN "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_header_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__["AuthRoute"], {
     exact: true,
     path: "/login",
     component: _auth_login_form_container__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -576,11 +573,11 @@ function (_React$Component) {
         type: "submit",
         value: this.props.formType
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "divider"
+        className: "session__or-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        className: "session__or-instruction--left"
+        className: "session__or-hr--left"
       }), "OR", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
-        className: "session__or-instruction--right"
+        className: "session__or-hr--right"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.navLink)));
     }
   }]);
@@ -721,10 +718,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/Greeting.jsx":
-/*!***************************************************!*\
-  !*** ./frontend/components/greeting/Greeting.jsx ***!
-  \***************************************************/
+/***/ "./frontend/components/header/Header.jsx":
+/*!***********************************************!*\
+  !*** ./frontend/components/header/Header.jsx ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -736,17 +733,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var Greeting = function Greeting(_ref) {
+var Header = function Header(_ref) {
   var currentUser = _ref.currentUser,
       logout = _ref.logout;
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/signup",
-      className: "register-navbar-button"
+      className: "header__btn--register"
     }, "Register"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/login",
-      className: "login-navbar-button"
+      className: "header__btn--login"
     }, "Login"));
   };
 
@@ -761,23 +758,26 @@ var Greeting = function Greeting(_ref) {
     }, "Log Out"));
   };
 
-  return currentUser ? personalGreeting() : sessionLinks();
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/",
+    className: "logo"
+  }, " OSUSCN "), currentUser ? personalGreeting() : sessionLinks());
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+/* harmony default export */ __webpack_exports__["default"] = (Header);
 
 /***/ }),
 
-/***/ "./frontend/components/greeting/greeting_container.jsx":
-/*!*************************************************************!*\
-  !*** ./frontend/components/greeting/greeting_container.jsx ***!
-  \*************************************************************/
+/***/ "./frontend/components/header/header_container.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/header/header_container.jsx ***!
+  \*********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Greeting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Greeting */ "./frontend/components/greeting/Greeting.jsx");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Header */ "./frontend/components/header/Header.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
 
@@ -800,7 +800,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_Greeting__WEBPACK_IMPORTED_MODULE_0__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"]));
 
 /***/ }),
 
@@ -31027,7 +31027,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

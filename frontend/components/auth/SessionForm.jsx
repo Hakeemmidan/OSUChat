@@ -153,10 +153,10 @@ export class SessionForm extends React.Component {
             </div>
           </form>
 
-          <div className="divider">
-            <hr className="session__or-instruction--left" />
+          <div className="session__or-container">
+            <hr className="session__or-hr--left" />
             OR
-            <hr className="session__or-instruction--right" />
+            <hr className="session__or-hr--right" />
           </div>
           {/* ^^^ source: https://stackoverflow.com/a/2812819/7974948 */}
           <br />

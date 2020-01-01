@@ -1,18 +1,7 @@
-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center; 
-  height: 10vh;
-  border-bottom: 1px solid grey;
-}
-
 .session__form-box {
   border: 1px solid grey;
   width: 33%;
-  padding-right: 7vh;
-  padding-left: 7vh;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
+  padding: 10vh 7vh;
 }
 
 .session__form-container {
@@ -62,19 +51,19 @@ header {
   }
 }
 
-.divider {
-	width:100%;
-	text-align:center;
+.session__or-container {
+	width: 100%;
+	text-align: center;
 }
 
-.divider hr {
-	margin-left:auto;
-	margin-right:auto;
-  width:40%;
+.session__or-container hr {
+	margin-left: auto;
+	margin-right: auto;
+  width: 40%;
   color: lightgrey;
 }
 
-.session__or-instruction {
+.session__or-hr {
 	&--left {
     float: left;
   }
@@ -88,4 +77,11 @@ header {
   color: #15c;
   text-decoration: underline;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .session__form-box {
+    width: 60%;
+    padding: 6vh 7vh;
+  }
 }
