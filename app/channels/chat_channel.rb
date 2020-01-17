@@ -8,6 +8,12 @@ class ChatChannel < ApplicationCable::Channel
     socket = { message: message.body }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
+
+  def load
+    messages = Message.all.collect(&:body)
+    socket = { messages: messages, type: 'messages' }
+    ChatChannel.broadcast_to('chat_channel', socket)
+  end
   
   def unsubscribed; end
 end
