@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   // tell webpack where entry point file lives
-  entry: './frontend/OSUSCN.jsx',
+  entry: './frontend/OSUChat.jsx',
   // tell webpack where to output bundled js file
   output: {
     // use path module to get absolute path to current directory (2 underscores)

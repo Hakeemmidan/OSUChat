@@ -1,6 +1,6 @@
-# OSUSCN
+# OSUChat
 
-Oregon State University Student Chat Network (OSUSCN) is a chat room that only users with an @oregonstate.edu domain can get access to. It is a place for people to get to know each other and potentially meetup later on.
+Oregon State University Student Chat Network (OSUChat) is a chat room that only users with an @oregonstate.edu domain can get access to. It is a place for people to get to know each other and potentially meetup later on.
 
 # MVP List
 ## 1. User auth (11/8/2019 - 11/9/2019, 2 days)

@@ -1,5 +1,5 @@
 {
-  "name": "OSUSCN",
+  "name": "OSUChat",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.6.0",
@@ -29,15 +29,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Hakeemmidan/OSUSCN.git"
+    "url": "git+https://github.com/Hakeemmidan/OSUChat.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Hakeemmidan/OSUSCN/issues"
+    "url": "https://github.com/Hakeemmidan/OSUChat/issues"
   },
-  "homepage": "https://github.com/Hakeemmidan/OSUSCN#readme",
+  "homepage": "https://github.com/Hakeemmidan/OSUChat#readme",
   "devDependencies": {
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.17.0"
