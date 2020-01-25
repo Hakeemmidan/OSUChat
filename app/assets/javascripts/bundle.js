@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./frontend/OSUSCN.jsx");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./frontend/OSUChat.jsx");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./frontend/OSUSCN.jsx":
-/*!*****************************!*\
-  !*** ./frontend/OSUSCN.jsx ***!
-  \*****************************/
+/***/ "./frontend/OSUChat.jsx":
+/*!******************************!*\
+  !*** ./frontend/OSUChat.jsx ***!
+  \******************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -555,7 +555,7 @@ function (_React$Component) {
         className: "session__form-box"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.handleSubmit
-      }, "Welcome to OSUSCN!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), this.renderSignupConfirmation(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Welcome to OSUChat!", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Please ", this.props.formType, " to continue", this.renderErrors(), this.renderSignupConfirmation(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "session__input-container"
       }, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -985,7 +985,7 @@ var Header = function Header(_ref) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/",
     className: "logo"
-  }, " OSUSCN "), currentUser ? personalGreeting() : sessionLinks());
+  }, " OSUChat "), currentUser ? personalGreeting() : sessionLinks());
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);

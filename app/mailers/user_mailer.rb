@@ -5,13 +5,13 @@ class UserMailer < ApplicationMailer
         @user = User.find(userId)
         return if @user.nil?
         
-        mail(to: @user.email, subject: 'OSUSCN Email Confirmation 🍊')
+        mail(to: @user.email, subject: 'OSUChat Email Confirmation 🍊')
     end
 
     def forgot_password_email(user)
         @user = user
         return if @user.nil?
         
-        mail(to: @user.email, subject: 'OSUSCN Password Reset 🔑')
+        mail(to: @user.email, subject: 'OSUChat Password Reset 🔑')
     end
 end
