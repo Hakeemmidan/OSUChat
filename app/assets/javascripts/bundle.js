@@ -915,6 +915,7 @@ function (_React$Component) {
       App.cable.subscriptions.subscriptions[0].speak({
         message: this.state.body
       });
+      App.cable.subscriptions.subscriptions[0].load();
       this.setState({
         body: ""
       });
