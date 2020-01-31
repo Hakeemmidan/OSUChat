@@ -822,7 +822,6 @@ function (_React$Component) {
     key: "loadChat",
     value: function loadChat(e) {
       if (e) e.preventDefault();
-      console.log('load chat');
       return App.cable.subscriptions.subscriptions[0].load();
     }
   }, {
