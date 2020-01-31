@@ -807,6 +807,12 @@ function (_React$Component) {
           return this.perform("load");
         }
       });
+      var messageList = $('.message-list');
+      messageList.scroll(function () {
+        if (messageList.scrollTop() < 10) {
+          App.cable.subscriptions.subscriptions[0].load();
+        }
+      });
     }
   }, {
     key: "loadChat",

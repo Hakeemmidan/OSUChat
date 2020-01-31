@@ -28,6 +28,13 @@ class MainChat extends React.Component {
         load: function () { return this.perform("load") }
       }
     );
+
+    let messageList = $('.message-list');
+    messageList.scroll(() => {
+      if (messageList.scrollTop() < 10) {
+        App.cable.subscriptions.subscriptions[0].load();
+      }
+    })
   }
 
   loadChat(e) {
