@@ -28,18 +28,22 @@ class MainChat extends React.Component {
         load: function () { return this.perform("load") }
       }
     );
+    
+    // Load initila chat
+    let that = this;
+    const loadInitialChat = setInterval(() => {
+      if (that.loadChat()) clearInterval(loadInitialChat);
+    }, 1000)
 
+    // Load more chat on scroll up
     let messageList = $('.message-list');
-    messageList.scroll(() => {
-      if (messageList.scrollTop() < 10) {
-        App.cable.subscriptions.subscriptions[0].load();
-      }
-    })
+    messageList.scroll(() => messageList.scrollTop() < 10 ? this.loadChat() : null)
   }
 
   loadChat(e) {
-    e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].load();
+    if (e) e.preventDefault();
+    console.log('load chat')
+    return App.cable.subscriptions.subscriptions[0].load();
   }
 
   render() {
@@ -51,6 +55,7 @@ class MainChat extends React.Component {
         </li>
       );
     });
+
     return (
       <div className="chatroom-container">
         <div>ChatRoom</div>

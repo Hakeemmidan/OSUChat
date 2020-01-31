@@ -806,19 +806,24 @@ function (_React$Component) {
         load: function load() {
           return this.perform("load");
         }
-      });
+      }); // Load initila chat
+
+      var that = this;
+      var loadInitialChat = setInterval(function () {
+        if (that.loadChat()) clearInterval(loadInitialChat);
+      }, 1000); // Load more chat on scroll up
+
       var messageList = $('.message-list');
       messageList.scroll(function () {
-        if (messageList.scrollTop() < 10) {
-          App.cable.subscriptions.subscriptions[0].load();
-        }
+        return messageList.scrollTop() < 10 ? _this2.loadChat() : null;
       });
     }
   }, {
     key: "loadChat",
     value: function loadChat(e) {
-      e.preventDefault();
-      App.cable.subscriptions.subscriptions[0].load();
+      if (e) e.preventDefault();
+      console.log('load chat');
+      return App.cable.subscriptions.subscriptions[0].load();
     }
   }, {
     key: "render",
