@@ -42,10 +42,6 @@ class MainChat extends React.Component {
     App.cable.subscriptions.subscriptions[0].load();
   }
 
-  componentDidUpdate() {
-    this.bottom.current.scrollIntoView();
-  }
-
   render() {
     const messageList = this.state.messages.map((message, idx) => {
       return (

@@ -821,11 +821,6 @@ function (_React$Component) {
       App.cable.subscriptions.subscriptions[0].load();
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.bottom.current.scrollIntoView();
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
