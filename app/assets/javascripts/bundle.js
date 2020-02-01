@@ -832,7 +832,7 @@ function (_React$Component) {
       var messageList = this.state.messages.map(function (message, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: message.id
-        }, message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, message.id, " ---------- ", message.body, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           ref: _this3.bottom
         }));
       });

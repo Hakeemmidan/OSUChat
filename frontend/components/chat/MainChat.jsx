@@ -49,7 +49,7 @@ class MainChat extends React.Component {
     const messageList = this.state.messages.map((message, idx) => {
       return (
         <li key={message.id}>
-          {message}
+          {message.id} ---------- {message.body}
           <div ref={this.bottom} />
         </li>
       );
