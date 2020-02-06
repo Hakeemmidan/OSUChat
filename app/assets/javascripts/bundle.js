@@ -812,6 +812,11 @@ function (_React$Component) {
       this.activatePaginationListener();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.bottom.current.scrollIntoView();
+    }
+  }, {
     key: "loadChat",
     value: function loadChat(firstLoadedMsgId) {
       var loadData = {

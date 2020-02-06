@@ -36,6 +36,10 @@ class MainChat extends React.Component {
     this.activatePaginationListener();
   }
 
+  componentDidUpdate() {
+    this.bottom.current.scrollIntoView();
+  }
+
   loadChat(firstLoadedMsgId) {
     let loadData = {firstLoadedMsgId: firstLoadedMsgId};
     return App.cable.subscriptions.subscriptions[0].load(loadData);
