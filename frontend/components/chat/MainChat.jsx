@@ -20,7 +20,10 @@ class MainChat extends React.Component {
               });
               break;
             case "messages":
-              this.setState({ messages: data.messages });
+              this.setState({
+                messages: this.state.messages.concat(data.messages),
+                firstLoadedMsgId: data.firstLoadedMsgId
+              });
               break;
           }
         },

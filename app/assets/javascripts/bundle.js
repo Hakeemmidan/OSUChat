@@ -794,7 +794,8 @@ function (_React$Component) {
 
             case "messages":
               _this2.setState({
-                messages: data.messages
+                messages: _this2.state.messages.concat(data.messages),
+                firstLoadedMsgId: data.firstLoadedMsgId
               });
 
               break;
