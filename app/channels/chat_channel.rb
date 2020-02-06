@@ -1,6 +1,4 @@
 class ChatChannel < ApplicationCable::Channel
-  @@load_amt = 25
-
   def subscribed
     stream_for 'chat_channel'
   end
@@ -11,20 +9,13 @@ class ChatChannel < ApplicationCable::Channel
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 
-  def load_initial()
-    messages = Message.last(@@load_amt)
-    first_loaded_msg_id = messages[0].id
-    socket = { messages: messages, firstLoadedMsgId: first_loaded_msg_id, type: 'messages' }
-    ChatChannel.broadcast_to('chat_channel', socket)
-  end
-
-  def load(start_id)
-    if start_id.is_a? Integer
-      messages = Message.where("id < #{start_id}").order('id desc').limit(25)
+  def load(data)
+    if data['firstLoadedMsgId'].is_a? Integer
+      messages = Message.where("id < #{data['firstLoadedMsgId']}").order('id asc').limit(25)
     else
       messages = Message.last(25)
     end
-
+    
     first_loaded_msg_id = messages[0].id
     socket = { messages: messages, firstLoadedMsgId: first_loaded_msg_id, type: 'messages' }
     ChatChannel.broadcast_to('chat_channel', socket)

@@ -794,7 +794,7 @@ function (_React$Component) {
 
             case "messages":
               _this2.setState({
-                messages: _this2.state.messages.concat(data.messages),
+                messages: data.messages.concat(_this2.state.messages),
                 firstLoadedMsgId: data.firstLoadedMsgId
               });
 
@@ -804,8 +804,8 @@ function (_React$Component) {
         speak: function speak(data) {
           return this.perform("speak", data);
         },
-        load: function load(firstLoadedMsgId) {
-          return this.perform("load", firstLoadedMsgId);
+        load: function load(data) {
+          return this.perform("load", data);
         }
       }); // Load initila chat
 
@@ -816,13 +816,16 @@ function (_React$Component) {
 
       var messageList = $('.message-list');
       messageList.scroll(function () {
-        return messageList.scrollTop() < 10 ? _this2.loadChat(_this2.state.firstLoadedMsgId) : null;
+        return messageList.scrollTop() < 5 ? _this2.loadChat(_this2.state.firstLoadedMsgId) : null;
       });
     }
   }, {
     key: "loadChat",
     value: function loadChat(firstLoadedMsgId) {
-      return App.cable.subscriptions.subscriptions[0].load(firstLoadedMsgId);
+      var loadData = {
+        firstLoadedMsgId: firstLoadedMsgId
+      };
+      return App.cable.subscriptions.subscriptions[0].load(loadData);
     }
   }, {
     key: "render",
@@ -838,7 +841,10 @@ function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chatroom-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "load-button",
+        onClick: this.loadChat.bind(this)
+      }, "Load Chat History"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-list"
       }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MessageForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
