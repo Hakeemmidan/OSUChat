@@ -38,14 +38,18 @@ class MainChat extends React.Component {
       if (that.loadChat()) clearInterval(loadInitialChat);
     }, 1000)
 
-    // Load more chat on scroll up
-    let messageList = $('.message-list');
-    messageList.scroll(() => messageList.scrollTop() < 5 ? this.loadChat(this.state.firstLoadedMsgId) : null)
+    this.activatePaginationListener();
   }
 
   loadChat(firstLoadedMsgId) {
     let loadData = {firstLoadedMsgId: firstLoadedMsgId};
     return App.cable.subscriptions.subscriptions[0].load(loadData);
+  }
+
+  activatePaginationListener() {
+    // Load more chat on scroll up
+    let messageList = $('.message-list');
+    messageList.scroll(() => messageList.scrollTop() < 5 ? this.loadChat(this.state.firstLoadedMsgId) : null)
   }
 
   render() {
@@ -61,10 +65,6 @@ class MainChat extends React.Component {
     return (
       <div className="chatroom-container">
         <div>ChatRoom</div>
-        <button className="load-button"
-          onClick={this.loadChat.bind(this)}>
-          Load Chat History
-        </button>
         <div className="message-list">{messageList}</div>
         <MessageForm />
       </div>
