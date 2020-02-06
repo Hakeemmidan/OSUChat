@@ -1,4 +1,6 @@
 class ChatChannel < ApplicationCable::Channel
+  @@load_amt = 25
+
   def subscribed
     stream_for 'chat_channel'
   end
@@ -6,6 +8,13 @@ class ChatChannel < ApplicationCable::Channel
   def speak(data)
     message = Message.create(body: data['message'])
     socket = { message: message.body }
+    ChatChannel.broadcast_to('chat_channel', socket)
+  end
+
+  def load_initial()
+    messages = Message.last(@@load_amt)
+    first_loaded_msg_id = messages[0].id
+    socket = { messages: messages, firstLoadedMsgId: first_loaded_msg_id, type: 'messages' }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 
