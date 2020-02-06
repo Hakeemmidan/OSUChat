@@ -32,18 +32,20 @@ class MainChat extends React.Component {
       }
     );
     
-    // Load initila chat
-    let that = this;
-    const loadInitialChat = setInterval(() => {
-      if (that.loadChat()) clearInterval(loadInitialChat);
-    }, 1000)
-
+    this.loadInitialChat();
     this.activatePaginationListener();
   }
 
   loadChat(firstLoadedMsgId) {
     let loadData = {firstLoadedMsgId: firstLoadedMsgId};
     return App.cable.subscriptions.subscriptions[0].load(loadData);
+  }
+
+  loadInitialChat() {
+    let that = this;
+    const loadInitialChat = setInterval(() => {
+      if (that.loadChat()) clearInterval(loadInitialChat);
+    }, 1000)
   }
 
   activatePaginationListener() {

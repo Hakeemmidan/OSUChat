@@ -807,12 +807,8 @@ function (_React$Component) {
         load: function load(data) {
           return this.perform("load", data);
         }
-      }); // Load initila chat
-
-      var that = this;
-      var loadInitialChat = setInterval(function () {
-        if (that.loadChat()) clearInterval(loadInitialChat);
-      }, 1000);
+      });
+      this.loadInitialChat();
       this.activatePaginationListener();
     }
   }, {
@@ -822,6 +818,14 @@ function (_React$Component) {
         firstLoadedMsgId: firstLoadedMsgId
       };
       return App.cable.subscriptions.subscriptions[0].load(loadData);
+    }
+  }, {
+    key: "loadInitialChat",
+    value: function loadInitialChat() {
+      var that = this;
+      var loadInitialChat = setInterval(function () {
+        if (that.loadChat()) clearInterval(loadInitialChat);
+      }, 1000);
     }
   }, {
     key: "activatePaginationListener",
