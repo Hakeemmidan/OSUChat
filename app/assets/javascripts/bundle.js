@@ -899,7 +899,7 @@ function (_React$Component) {
       var messageList = this.state.messages.map(function (message, idx) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "main-chat-".concat(message.id)
-        }, message.id, " ---------- ", message.body, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, message.author_username, " ---------- ", message.body, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           ref: _this4.bottom
         }));
       });
