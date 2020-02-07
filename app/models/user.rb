@@ -9,8 +9,11 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
   before_create :ensure_confirmation_token, :downcase_fields
-
   attr_reader :password
+
+  has_many :messages,
+    foreign_key: :author_id,
+    class_name: 'Message'
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email.downcase)

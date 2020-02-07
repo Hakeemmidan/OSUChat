@@ -934,9 +934,10 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       App.cable.subscriptions.subscriptions[0].speak({
-        message: this.state.body
+        message: {
+          body: this.state.body
+        }
       });
-      App.cable.subscriptions.subscriptions[0].load();
       this.setState({
         body: ""
       });
@@ -31287,7 +31288,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
