@@ -5,7 +5,7 @@ import HeaderContainer from './header/header_container';
 import SignUpFormContainer from './auth/signup_form_container';
 import LogInFormContainer from './auth/login_form_container';
 import ForgotPasswordFormContainer from './auth/forgot_password_form_container';
-import MainChat from './chat/MainChat';
+import { MainChat } from './chat/MainChat';
 
 
 export const App = () => (

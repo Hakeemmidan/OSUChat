@@ -1,7 +1,7 @@
 import React from "react";
 import MessageForm from "./MessageForm";
 
-class MainChat extends React.Component {
+export class MainChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
@@ -78,5 +78,3 @@ class MainChat extends React.Component {
     );
   }
 }
-
-export default MainChat;

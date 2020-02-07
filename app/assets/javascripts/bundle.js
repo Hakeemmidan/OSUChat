@@ -320,7 +320,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__["ProtectedRoute"], {
     exact: true,
     path: "/chat",
-    component: _chat_MainChat__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _chat_MainChat__WEBPACK_IMPORTED_MODULE_7__["MainChat"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
@@ -776,11 +776,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!***********************************************!*\
   !*** ./frontend/components/chat/MainChat.jsx ***!
   \***********************************************/
-/*! exports provided: default */
+/*! exports provided: MainChat */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainChat", function() { return MainChat; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MessageForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageForm */ "./frontend/components/chat/MessageForm.jsx");
@@ -801,7 +802,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -915,8 +915,6 @@ function (_React$Component) {
 
   return MainChat;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (MainChat);
 
 /***/ }),
 
