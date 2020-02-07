@@ -14,7 +14,11 @@ export class MessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({ message: { body: this.state.body, authorId: this.props.currentUser.id  }});
+    let messageObj = { 
+        body: this.state.body,
+        authorId: this.props.currentUser.id,
+        authorUsername: this.props.currentUser.username };
+    App.cable.subscriptions.subscriptions[0].speak({ message: messageObj });
     this.setState({ body: "" });
   }
 

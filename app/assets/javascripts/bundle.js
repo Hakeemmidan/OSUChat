@@ -980,11 +980,13 @@ function (_React$Component) {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       e.preventDefault();
+      var messageObj = {
+        body: this.state.body,
+        authorId: this.props.currentUser.id,
+        authorUsername: this.props.currentUser.username
+      };
       App.cable.subscriptions.subscriptions[0].speak({
-        message: {
-          body: this.state.body,
-          authorId: this.props.currentUser.id
-        }
+        message: messageObj
       });
       this.setState({
         body: ""
