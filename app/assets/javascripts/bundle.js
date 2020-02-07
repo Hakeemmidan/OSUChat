@@ -133,6 +133,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/actions/message_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/message_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_SPEAK_MESSAGE, RECEIVE_LOAD_MESSAGES, receiveSpeakMessage, receiveLoadMessages, speak, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SPEAK_MESSAGE", function() { return RECEIVE_SPEAK_MESSAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LOAD_MESSAGES", function() { return RECEIVE_LOAD_MESSAGES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSpeakMessage", function() { return receiveSpeakMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveLoadMessages", function() { return receiveLoadMessages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "speak", function() { return speak; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+/* harmony import */ var _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/message_api_util */ "./frontend/util/message_api_util.js");
+var RECEIVE_SPEAK_MESSAGE = 'RECEIVE_SPEAK_MESSAGE';
+var RECEIVE_LOAD_MESSAGES = 'RECEIVE_LOAD_MESSAGES';
+
+var receiveSpeakMessage = function receiveSpeakMessage(message) {
+  return {
+    type: RECEIVE_SPEAK_MESSAGE,
+    message: message
+  };
+};
+var receiveLoadMessages = function receiveLoadMessages(data) {
+  return {
+    type: RECEIVE_LOAD_MESSAGES,
+    data: data
+  };
+};
+var speak = function speak(message) {
+  return function (dispatch) {
+    return _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__["speak"](message).then(function (message) {
+      return dispatch(receiveSpeakMessage(message));
+    });
+  };
+};
+var load = function load(data) {
+  return function (dispatch) {
+    return _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__["load"](data).then(function (messages) {
+      return dispatch(receiveLoadMessages(messages));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -784,6 +832,8 @@ function (_React$Component) {
         channel: "ChatChannel"
       }, {
         received: function received(data) {
+          debugger;
+
           switch (data.type) {
             case "message":
               _this2.setState({
@@ -1090,11 +1140,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "entitiesReducer", function() { return entitiesReducer; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/entities/users_reducer.js");
+/* harmony import */ var _messages_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messages_reducer */ "./frontend/reducers/entities/messages_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  messages: _messages_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
+
+/***/ }),
+
+/***/ "./frontend/reducers/entities/messages_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/entities/messages_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/message_actions */ "./frontend/actions/message_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var messagesReducer = function messagesReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var nextState;
+  var messagesObj;
+
+  switch (action.type) {
+    case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SPEAK_MESSAGE"]:
+      nextState = Object.assign({}, oldState, _defineProperty({}, action.message.id, action.message));
+      return nextState;
+
+    case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LOAD_MESSAGES"]:
+      messagesObj = action.data.messages.reduce(function (obj, msg) {
+        return Object.assign(obj, _defineProperty({}, msg.id, msg));
+      }, {});
+      nextState = Object.assign({}, oldState, messagesObj);
+      return nextState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (messagesReducer);
 
 /***/ }),
 
@@ -1329,6 +1424,26 @@ __webpack_require__.r(__webpack_exports__);
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+};
+
+/***/ }),
+
+/***/ "./frontend/util/message_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/message_api_util.js ***!
+  \*******************************************/
+/*! exports provided: speak, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "speak", function() { return speak; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+var speak = function speak(data) {
+  return App.cable.subscriptions.subscriptions[0].speak(data);
+};
+var load = function load(data) {
+  return App.cable.subscriptions.subscriptions[0].load(data);
 };
 
 /***/ }),

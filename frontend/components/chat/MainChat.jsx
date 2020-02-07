@@ -13,6 +13,7 @@ class MainChat extends React.Component {
       { channel: "ChatChannel" },
       {
         received: data => {
+          debugger
           switch (data.type) {
             case "message":
               this.setState({

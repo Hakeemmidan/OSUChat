@@ -18,8 +18,8 @@ export const speak = message => dispatch => (
   ))
 );
 
-export const Load = data => dispatch => (
-  MessageAPIUtil.Load(data).then(messages => (
+export const load = data => dispatch => (
+  MessageAPIUtil.load(data).then(messages => (
     dispatch(receiveLoadMessages(messages))
   ))
 );
