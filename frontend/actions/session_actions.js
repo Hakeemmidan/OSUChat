@@ -13,7 +13,7 @@ export const receiveCurrentUser = (currentUser) => ({
 export const signupCurrentUser = (confirmationMsg) => ({
   type: SIGNUP_CURRENT_USER,
   confirmationMsg
-})
+});
 
 export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
