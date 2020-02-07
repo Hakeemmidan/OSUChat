@@ -948,6 +948,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+/* eslint-disable react/prop-types */
 
 var MessageForm =
 /*#__PURE__*/
@@ -981,7 +982,8 @@ function (_React$Component) {
       e.preventDefault();
       App.cable.subscriptions.subscriptions[0].speak({
         message: {
-          body: this.state.body
+          body: this.state.body,
+          authorId: this.props.currentUser.id
         }
       });
       this.setState({

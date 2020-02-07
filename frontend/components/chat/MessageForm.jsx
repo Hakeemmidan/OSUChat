@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 
 export class MessageForm extends React.Component {
@@ -13,7 +14,7 @@ export class MessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    App.cable.subscriptions.subscriptions[0].speak({ message: { body: this.state.body }});
+    App.cable.subscriptions.subscriptions[0].speak({ message: { body: this.state.body, authorId: this.props.currentUser.id  }});
     this.setState({ body: "" });
   }
 
