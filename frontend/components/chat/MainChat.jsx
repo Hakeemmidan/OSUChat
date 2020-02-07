@@ -1,5 +1,5 @@
 import React from "react";
-import MessageForm from "./MessageForm";
+import MessageFormContainer from "./message_form_container";
 
 export class MainChat extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ export class MainChat extends React.Component {
       { channel: "ChatChannel" },
       {
         received: data => {
-          debugger
           switch (data.type) {
             case "message":
               this.setState({
@@ -73,7 +72,7 @@ export class MainChat extends React.Component {
       <div className="chatroom-container">
         <div>ChatRoom</div>
         <div className="message-list">{messageList}</div>
-        <MessageForm />
+        <MessageFormContainer />
       </div>
     );
   }
