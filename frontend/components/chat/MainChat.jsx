@@ -1,7 +1,7 @@
 import React from "react";
-import MessageForm from "./MessageForm";
+import MessageFormContainer from "./message_form_container";
 
-class MainChat extends React.Component {
+export class MainChat extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
@@ -72,10 +72,8 @@ class MainChat extends React.Component {
       <div className="chatroom-container">
         <div>ChatRoom</div>
         <div className="message-list">{messageList}</div>
-        <MessageForm />
+        <MessageFormContainer />
       </div>
     );
   }
 }
-
-export default MainChat;

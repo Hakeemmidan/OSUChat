@@ -133,6 +133,54 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /***/ }),
 
+/***/ "./frontend/actions/message_actions.js":
+/*!*********************************************!*\
+  !*** ./frontend/actions/message_actions.js ***!
+  \*********************************************/
+/*! exports provided: RECEIVE_SPEAK_MESSAGE, RECEIVE_LOAD_MESSAGES, receiveSpeakMessage, receiveLoadMessages, speak, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SPEAK_MESSAGE", function() { return RECEIVE_SPEAK_MESSAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_LOAD_MESSAGES", function() { return RECEIVE_LOAD_MESSAGES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSpeakMessage", function() { return receiveSpeakMessage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveLoadMessages", function() { return receiveLoadMessages; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "speak", function() { return speak; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+/* harmony import */ var _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/message_api_util */ "./frontend/util/message_api_util.js");
+var RECEIVE_SPEAK_MESSAGE = 'RECEIVE_SPEAK_MESSAGE';
+var RECEIVE_LOAD_MESSAGES = 'RECEIVE_LOAD_MESSAGES';
+
+var receiveSpeakMessage = function receiveSpeakMessage(message) {
+  return {
+    type: RECEIVE_SPEAK_MESSAGE,
+    message: message
+  };
+};
+var receiveLoadMessages = function receiveLoadMessages(data) {
+  return {
+    type: RECEIVE_LOAD_MESSAGES,
+    data: data
+  };
+};
+var speak = function speak(message) {
+  return function (dispatch) {
+    return _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__["speak"](message).then(function (message) {
+      return dispatch(receiveSpeakMessage(message));
+    });
+  };
+};
+var load = function load(data) {
+  return function (dispatch) {
+    return _util_message_api_util__WEBPACK_IMPORTED_MODULE_0__["load"](data).then(function (messages) {
+      return dispatch(receiveLoadMessages(messages));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -247,7 +295,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./auth/signup_form_container */ "./frontend/components/auth/signup_form_container.js");
 /* harmony import */ var _auth_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/login_form_container */ "./frontend/components/auth/login_form_container.js");
 /* harmony import */ var _auth_forgot_password_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/forgot_password_form_container */ "./frontend/components/auth/forgot_password_form_container.js");
-/* harmony import */ var _chat_MainChat__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./chat/MainChat */ "./frontend/components/chat/MainChat.jsx");
+/* harmony import */ var _chat_main_chat_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./chat/main_chat_container */ "./frontend/components/chat/main_chat_container.js");
 
 
 
@@ -272,7 +320,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__["ProtectedRoute"], {
     exact: true,
     path: "/chat",
-    component: _chat_MainChat__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _chat_main_chat_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
     path: "/",
@@ -728,14 +776,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 /*!***********************************************!*\
   !*** ./frontend/components/chat/MainChat.jsx ***!
   \***********************************************/
-/*! exports provided: default */
+/*! exports provided: MainChat */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainChat", function() { return MainChat; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MessageForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MessageForm */ "./frontend/components/chat/MessageForm.jsx");
+/* harmony import */ var _message_form_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./message_form_container */ "./frontend/components/chat/message_form_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -753,7 +802,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -859,14 +907,12 @@ function (_React$Component) {
         className: "chatroom-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-list"
-      }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MessageForm__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
   return MainChat;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (MainChat);
 
 /***/ }),
 
@@ -874,11 +920,12 @@ function (_React$Component) {
 /*!**************************************************!*\
   !*** ./frontend/components/chat/MessageForm.jsx ***!
   \**************************************************/
-/*! exports provided: default */
+/*! exports provided: MessageForm */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MessageForm", function() { return MessageForm; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -901,7 +948,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-
+/* eslint-disable react/prop-types */
 
 var MessageForm =
 /*#__PURE__*/
@@ -934,9 +981,11 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       App.cable.subscriptions.subscriptions[0].speak({
-        message: this.state.body
+        message: {
+          body: this.state.body,
+          authorId: this.props.currentUser.id
+        }
       });
-      App.cable.subscriptions.subscriptions[0].load();
       this.setState({
         body: ""
       });
@@ -960,7 +1009,82 @@ function (_React$Component) {
   return MessageForm;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (MessageForm);
+/***/ }),
+
+/***/ "./frontend/components/chat/main_chat_container.js":
+/*!*********************************************************!*\
+  !*** ./frontend/components/chat/main_chat_container.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_message_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/message_actions */ "./frontend/actions/message_actions.js");
+/* harmony import */ var _MainChat__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MainChat */ "./frontend/components/chat/MainChat.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities;
+  return {
+    messages: entities.messages
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    loadChat: function loadChat(data) {
+      return dispatch(Object(_actions_message_actions__WEBPACK_IMPORTED_MODULE_2__["load"])(data));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_MainChat__WEBPACK_IMPORTED_MODULE_3__["MainChat"]));
+
+/***/ }),
+
+/***/ "./frontend/components/chat/message_form_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/chat/message_form_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_message_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/message_actions */ "./frontend/actions/message_actions.js");
+/* harmony import */ var _MessageForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MessageForm */ "./frontend/components/chat/MessageForm.jsx");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var entities = _ref.entities,
+      session = _ref.session;
+  return {
+    currentUser: entities.users[session.id]
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    speak: function speak(data) {
+      return dispatch(Object(_actions_message_actions__WEBPACK_IMPORTED_MODULE_2__["speak"])(data));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_MessageForm__WEBPACK_IMPORTED_MODULE_3__["MessageForm"]));
 
 /***/ }),
 
@@ -1089,11 +1213,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "entitiesReducer", function() { return entitiesReducer; });
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/entities/users_reducer.js");
+/* harmony import */ var _messages_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messages_reducer */ "./frontend/reducers/entities/messages_reducer.js");
+
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  messages: _messages_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
+
+/***/ }),
+
+/***/ "./frontend/reducers/entities/messages_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/entities/messages_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../actions/message_actions */ "./frontend/actions/message_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var messagesReducer = function messagesReducer() {
+  var oldState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(oldState);
+  var nextState;
+  var messagesObj;
+
+  switch (action.type) {
+    case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SPEAK_MESSAGE"]:
+      nextState = Object.assign({}, oldState, _defineProperty({}, action.message.id, action.message));
+      return nextState;
+
+    case _actions_message_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_LOAD_MESSAGES"]:
+      messagesObj = action.data.messages.reduce(function (obj, msg) {
+        return Object.assign(obj, _defineProperty({}, msg.id, msg));
+      }, {});
+      nextState = Object.assign({}, oldState, messagesObj);
+      return nextState;
+
+    default:
+      return oldState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (messagesReducer);
 
 /***/ }),
 
@@ -1328,6 +1497,26 @@ __webpack_require__.r(__webpack_exports__);
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_3__["default"], preloadedState, Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], redux_logger__WEBPACK_IMPORTED_MODULE_1___default.a));
+};
+
+/***/ }),
+
+/***/ "./frontend/util/message_api_util.js":
+/*!*******************************************!*\
+  !*** ./frontend/util/message_api_util.js ***!
+  \*******************************************/
+/*! exports provided: speak, load */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "speak", function() { return speak; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "load", function() { return load; });
+var speak = function speak(data) {
+  return App.cable.subscriptions.subscriptions[0].speak(data);
+};
+var load = function load(data) {
+  return App.cable.subscriptions.subscriptions[0].load(data);
 };
 
 /***/ }),
