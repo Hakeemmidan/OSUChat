@@ -34,6 +34,12 @@ header {
       background-color: black;
       color: white;
     }
+
+    @media (hover: none) {
+      & {
+        background-color: white;
+      }
+    }
   }
 }
 
@@ -41,4 +47,8 @@ header {
   .logo {
     font-size: calc(28px + 1vw);
   }
+}
+
+@media (hover: none) {
+
 }

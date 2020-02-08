@@ -1264,12 +1264,7 @@ var UnknownRoute = function UnknownRoute() {
       style: {
         margin: 'auto'
       }
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
-      src: "https://giphy.com/embed/3ELtfmA4Apkju",
-      width: "320",
-      height: "333",
-      frameBorder: "0"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You entered a route that doesn't exist", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Click on logo to navigate back"))
+    }, "You entered a route that doesn't exist", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Click on logo to navigate back"))
   );
 };
 
