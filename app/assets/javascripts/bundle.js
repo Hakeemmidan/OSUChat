@@ -296,6 +296,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_login_form_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth/login_form_container */ "./frontend/components/auth/login_form_container.js");
 /* harmony import */ var _auth_forgot_password_form_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth/forgot_password_form_container */ "./frontend/components/auth/forgot_password_form_container.js");
 /* harmony import */ var _chat_main_chat_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./chat/main_chat_container */ "./frontend/components/chat/main_chat_container.js");
+/* harmony import */ var _unknown_route_UnknownRoute__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./unknown_route/UnknownRoute */ "./frontend/components/unknown_route/UnknownRoute.jsx");
+
 
 
 
@@ -323,10 +325,14 @@ var App = function App(props) {
     component: _chat_main_chat_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     exact: true,
-    path: "/*"
+    path: "/"
   }, props.currentUser ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_chat_main_chat_container__WEBPACK_IMPORTED_MODULE_7__["default"], null) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
     to: '/login'
-  }))));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    exact: true,
+    path: "/*",
+    component: _unknown_route_UnknownRoute__WEBPACK_IMPORTED_MODULE_8__["UnknownRoute"]
+  })));
 };
 
 /***/ }),
@@ -1231,6 +1237,41 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapStateToProps, mapDispatchToProps)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/unknown_route/UnknownRoute.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/unknown_route/UnknownRoute.jsx ***!
+  \************************************************************/
+/*! exports provided: UnknownRoute */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UnknownRoute", function() { return UnknownRoute; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var UnknownRoute = function UnknownRoute() {
+  return (// Will get displayed if the user tries to go to a route that doesn't exist
+    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      style: {
+        display: 'flex',
+        paddingTop: '60px'
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      style: {
+        margin: 'auto'
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
+      src: "https://giphy.com/embed/3ELtfmA4Apkju",
+      width: "480",
+      height: "333",
+      frameBorder: "0"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You entered a route that doesn't exist", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Click on logo to navigate back to the truth"))
+  );
+};
 
 /***/ }),
 
@@ -31509,7 +31550,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
