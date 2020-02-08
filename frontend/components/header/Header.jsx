@@ -11,7 +11,7 @@ const Header = ({ currentUser, logout }) => {
   const personalGreeting = () => (
     <nav className="header__right-container">
       <div className="header__right-container--username">
-        Hi, {currentUser.username}
+        {currentUser.username}
       </div>
       <button className="header__right-container--logout-btn" onClick={logout}>
         Log Out

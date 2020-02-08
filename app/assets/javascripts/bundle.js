@@ -1188,7 +1188,7 @@ var Header = function Header(_ref) {
       className: "header__right-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "header__right-container--username"
-    }, "Hi, ", currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "header__right-container--logout-btn",
       onClick: logout
     }, "Log Out"));
@@ -1266,10 +1266,10 @@ var UnknownRoute = function UnknownRoute() {
       }
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("iframe", {
       src: "https://giphy.com/embed/3ELtfmA4Apkju",
-      width: "480",
+      width: "320",
       height: "333",
       frameBorder: "0"
-    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You entered a route that doesn't exist", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Click on logo to navigate back to the truth"))
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "You entered a route that doesn't exist", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Click on logo to navigate back"))
   );
 };
 
