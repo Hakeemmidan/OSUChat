@@ -58,20 +58,36 @@ export class MainChat extends React.Component {
     messageList.scroll(() => messageList.scrollTop() < 5 ? this.loadChat(this.state.firstLoadedMsgId) : null)
   }
 
-  render() {
-    const messageList = this.state.messages.map((message, idx) => {
-      return (
-        <li key={`main-chat-${message.id}`}>
-          {message.author_username ? message.author_username : 'Benny'} ---------- {message.body}
-          <div ref={this.bottom} />
-        </li>
-      );
-    });
-
+  renderMessageList() {
     return (
-      <div className="chatroom-container">
-        <div>ChatRoom</div>
-        <div className="message-list">{messageList}</div>
+      <div className="chat-msgs-container">
+        <ul className="msgs-ul">
+          {this.state.messages.map((message) => (
+            <li key={`main-chat-${message.id}`} className="msg">
+              <section class="msg__upper">
+                <span class="msg__upper--author">
+                  {message.author_username ? message.author_username : 'Benny'}
+                </span>
+                <span class="msg__upper--time-date">
+                  {message.created_at}
+                </span>
+              </section>
+              <section class="msg__lower">
+                <div class="msg__lower--body">
+                  {message.body}
+                </div>
+              </section>
+              <div ref={this.bottom} />
+            </li>))}
+        </ul>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <div className="chat-container">
+        {this.renderMessageList()}
         <MessageFormContainer />
       </div>
     );

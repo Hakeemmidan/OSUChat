@@ -956,22 +956,39 @@ function (_React$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "renderMessageList",
+    value: function renderMessageList() {
       var _this4 = this;
 
-      var messageList = this.state.messages.map(function (message, idx) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "chat-msgs-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "msgs-ul"
+      }, this.state.messages.map(function (message) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-          key: "main-chat-".concat(message.id)
-        }, message.author_username ? message.author_username : 'Benny', " ---------- ", message.body, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: "main-chat-".concat(message.id),
+          className: "msg"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          "class": "msg__upper"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          "class": "msg__upper--author"
+        }, message.author_username ? message.author_username : 'Benny'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          "class": "msg__upper--time-date"
+        }, message.created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+          "class": "msg__lower"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          "class": "msg__lower--body"
+        }, message.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           ref: _this4.bottom
         }));
-      });
+      })));
+    }
+  }, {
+    key: "render",
+    value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "chatroom-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "ChatRoom"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "message-list"
-      }, messageList), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+        className: "chat-container"
+      }, this.renderMessageList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
     }
   }]);
 
