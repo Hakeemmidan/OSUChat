@@ -17,38 +17,34 @@
 
 .msg {
   margin-top: calc(0.5vw + 10px);
-}
-
-.msg__upper {
-  margin-bottom: 2px;
-}
-
-.msg__upper--author {
-  font-size: calc(0.5vw + 11px);
-}
-
-.msg__upper--time-date {
-  font-size: 12px;
-  color: lightgray;
-}
-
-.msg__lower--body {
-  font-weight: 300;
+  &__upper {
+    margin-bottom: 2px;
+    &--author {
+      font-size: calc(0.5vw + 11px);
+    }
+    &--time-date {
+      font-size: 12px;
+      color: lightgray;
+    }
+  }
+  &__lower {
+    &--body {
+      font-weight: 300;    
+    }
+  }
 }
 
 .chat-form {
   display: flex;
-}
-
-.chat-form__input {
-  width: 80%;
-  height: 40px;
-  min-height: 5em;
-	max-height: 50vh;
-}
-
-.chat-form__submit {
-  width: 20%;
-  padding: 16px 10px;
-  font-size: 12px;
+  &__input {
+    width: 80%;
+    height: 40px;
+    min-height: 5em;
+    max-height: 50vh;
+  }
+  &__submit {
+    width: 20%;
+    padding: 16px 10px;
+    font-size: 12px;
+  }
 }

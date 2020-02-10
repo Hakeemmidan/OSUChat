@@ -969,15 +969,15 @@ function (_React$Component) {
           key: "main-chat-".concat(message.id),
           className: "msg"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          "class": "msg__upper"
+          className: "msg__upper"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "msg__upper--author"
+          className: "msg__upper--author"
         }, message.author_username ? message.author_username : 'Benny'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "msg__upper--time-date"
+          className: "msg__upper--time-date"
         }, message.created_at)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
-          "class": "msg__lower"
+          className: "msg__lower"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "msg__lower--body"
+          className: "msg__lower--body"
         }, message.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           ref: _this4.bottom
         }));
