@@ -1,6 +1,9 @@
+@import '../components/button';
+
 .chat-container {
   margin: 5vh auto 0 auto;
   max-width: 700px;
+  font-size: calc(0.5vw + 12px);
 }
 
 .chat-msgs-container {
@@ -12,11 +15,10 @@
 
 .msgs-ul {
   list-style: none;
-  font-size: calc(0.5vw + 12px);
 }
 
 .msg {
-  margin-top: calc(0.5vw + 10px);
+  margin-top: 12px;
   &__upper {
     margin-bottom: 2px;
     &--author {
@@ -29,7 +31,7 @@
   }
   &__lower {
     &--body {
-      font-weight: 300;    
+      font-weight: 300;
     }
   }
 }
@@ -38,13 +40,22 @@
   display: flex;
   &__input {
     width: 80%;
-    height: 40px;
-    min-height: 5em;
-    max-height: 50vh;
+    height: 10px;
+    min-height: 2vh;
+    max-height: 20vh;
+    font-size: calc(0.5vw + 11px);
+    border: 1px solid lightgray;
+    padding: 20px 20px 20px 40px;
   }
   &__submit {
+    @extend .session__btn;
     width: 20%;
     padding: 16px 10px;
-    font-size: 12px;
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid lightgray;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: gray;
   }
 }

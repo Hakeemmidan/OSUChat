@@ -5,6 +5,7 @@ export class MessageForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { body: "" };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   update(field) {
@@ -13,11 +14,16 @@ export class MessageForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    debugger
     let messageObj = { 
         body: this.state.body,
         authorId: this.props.currentUser.id,
-        authorUsername: this.props.currentUser.username };
+        authorUsername: this.props.currentUser.username
+    };
     App.cable.subscriptions.subscriptions[0].speak({ message: messageObj });
     this.setState({ body: "" });
   }
@@ -25,14 +31,15 @@ export class MessageForm extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form className="chat-form" onSubmit={this.handleSubmit}>
           <input
-            type="text"
+            className="chat-form__input"
+            maxLength="280"
             value={this.state.body}
             onChange={this.update("body")}
-            placeholder="Type message here"
+            placeholder="Enter message here"
           />
-          <input type="submit" />
+          <input type="submit" className="chat-form__submit" value="⏎" />
         </form>
       </div>
     );
