@@ -57,5 +57,9 @@
     font-family: sans-serif;
     font-size: 15px;
     color: gray;
+    &:hover {
+      background-color: orange;
+      color: white;
+    }
   }
 }

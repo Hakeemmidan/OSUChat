@@ -1066,7 +1066,6 @@ function (_React$Component) {
         e.stopPropagation();
       }
 
-      debugger;
       var messageObj = {
         body: this.state.body,
         authorId: this.props.currentUser.id,

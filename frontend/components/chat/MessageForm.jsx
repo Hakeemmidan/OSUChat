@@ -18,7 +18,6 @@ export class MessageForm extends React.Component {
       e.preventDefault();
       e.stopPropagation();
     }
-    debugger
     let messageObj = { 
         body: this.state.body,
         authorId: this.props.currentUser.id,
