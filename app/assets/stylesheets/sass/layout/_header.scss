@@ -1,3 +1,5 @@
+@import '../abstract/mixins';
+
 header {
   display: flex;
   justify-content: space-around;
@@ -29,12 +31,12 @@ header {
     border-radius: 7px;
     cursor: pointer;
     color: black;
-
-    &:hover {
-      background-color: black;
-      color: white;
+    @include hover-supported() {
+      &:hover {
+        background-color: black;
+        color: white;
+      }
     }
-
     @media (hover: none) {
       & {
         background-color: white;
@@ -47,8 +49,4 @@ header {
   .logo {
     font-size: calc(28px + 1vw);
   }
-}
-
-@media (hover: none) {
-
 }
