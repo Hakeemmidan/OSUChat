@@ -899,7 +899,7 @@ function (_React$Component) {
           switch (data.type) {
             case "message":
               _this2.setState({
-                messages: _this2.state.messages.concat(data.message)
+                messages: [data.message].concat(_this2.state.messages)
               });
 
               break;
@@ -950,7 +950,7 @@ function (_React$Component) {
       var _this3 = this;
 
       // Load more chat on scroll up
-      var messageList = $('.message-list');
+      var messageList = $('.chat-msgs-container');
       messageList.scroll(function () {
         return messageList.scrollTop() < 5 ? _this3.loadChat(_this3.state.firstLoadedMsgId) : null;
       });

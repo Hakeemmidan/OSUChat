@@ -16,7 +16,7 @@ export class MainChat extends React.Component {
           switch (data.type) {
             case "message":
               this.setState({
-                messages: this.state.messages.concat(data.message)
+                messages: [data.message].concat(this.state.messages)
               });
               break;
             case "messages":
@@ -54,7 +54,7 @@ export class MainChat extends React.Component {
 
   activatePaginationListener() {
     // Load more chat on scroll up
-    let messageList = $('.message-list');
+    let messageList = $('.chat-msgs-container');
     messageList.scroll(() => messageList.scrollTop() < 5 ? this.loadChat(this.state.firstLoadedMsgId) : null)
   }
 
