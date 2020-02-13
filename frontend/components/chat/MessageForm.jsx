@@ -18,6 +18,10 @@ export class MessageForm extends React.Component {
       e.preventDefault();
       e.stopPropagation();
     }
+
+    // Disallow empty messages
+    if (this.state.body.replace(/\s/g, '') === '') return;
+
     let messageObj = { 
         body: this.state.body,
         authorId: this.props.currentUser.id,
