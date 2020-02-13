@@ -8,7 +8,7 @@ class ChatChannel < ApplicationCable::Channel
       body: data['message']['body'],
       author_id: data['message']['authorId'],
       author_username: data['message']['authorUsername'])
-    socket = { message: message }
+    socket = { message: message, type: 'message' }
     ChatChannel.broadcast_to('chat_channel', socket)
   end
 

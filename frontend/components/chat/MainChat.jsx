@@ -16,7 +16,7 @@ export class MainChat extends React.Component {
           switch (data.type) {
             case "message":
               this.setState({
-                messages: [data.message].concat(this.state.messages)
+                messages: this.state.messages.concat(data.message)
               });
               break;
             case "messages":

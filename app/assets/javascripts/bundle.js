@@ -899,7 +899,7 @@ function (_React$Component) {
           switch (data.type) {
             case "message":
               _this2.setState({
-                messages: [data.message].concat(_this2.state.messages)
+                messages: _this2.state.messages.concat(data.message)
               });
 
               break;
