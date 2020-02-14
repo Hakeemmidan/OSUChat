@@ -139,7 +139,7 @@ export class SessionForm extends React.Component {
 
               <Link
                 to="/forgot-password"
-                className="session__link">
+                className="link">
                 forgot password?
               </Link>
               <br/>

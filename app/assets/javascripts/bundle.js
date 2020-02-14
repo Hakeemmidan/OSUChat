@@ -683,7 +683,7 @@ function (_React$Component) {
         className: "session__textbox"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/forgot-password",
-        className: "session__link"
+        className: "link"
       }, "forgot password?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "session__btn--submit",
         onClick: this.handleSubmit
@@ -986,9 +986,17 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "chat-container"
-      }, this.renderMessageList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+      }, this.renderMessageList(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_message_form_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "contact"
+      }, "For feedback/contribution contact\xA0", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "link",
+        style: {
+          color: 'lightgray'
+        },
+        href: "mailto:Hakeemmidan@gmail.com"
+      }, "Hakeemmidan@gmail.com")));
     }
   }]);
 
@@ -1083,7 +1091,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "chat-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -1096,7 +1104,7 @@ function (_React$Component) {
         type: "submit",
         className: "chat-form__submit",
         value: "\u23CE"
-      })));
+      }));
     }
   }]);
 

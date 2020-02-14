@@ -44,17 +44,6 @@
   }
 }
 
-.session__link {
-  cursor: pointer;
-  color: gray;
-  text-decoration: underline;
-  @include hover-supported() {
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-}
-
 .session__or-container {
 	width: 100%;
 	text-align: center;

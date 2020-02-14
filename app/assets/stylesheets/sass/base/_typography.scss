@@ -1,0 +1,12 @@
+@import '../abstract/_mixins.scss';
+ 
+.link {
+  cursor: pointer;
+  color: gray;
+  text-decoration: underline;
+  @include hover-supported() {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

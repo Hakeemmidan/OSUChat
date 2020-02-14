@@ -33,18 +33,16 @@ export class MessageForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="chat-form" onSubmit={this.handleSubmit}>
-          <input
-            className="chat-form__input"
-            maxLength="280"
-            value={this.state.body}
-            onChange={this.update("body")}
-            placeholder="Enter message here"
-          />
-          <input type="submit" className="chat-form__submit" value="⏎" />
-        </form>
-      </div>
+      <form className="chat-form" onSubmit={this.handleSubmit}>
+        <input
+          className="chat-form__input"
+          maxLength="280"
+          value={this.state.body}
+          onChange={this.update("body")}
+          placeholder="Enter message here"
+        />
+        <input type="submit" className="chat-form__submit" value="⏎" />
+      </form>
     );
   }
 }

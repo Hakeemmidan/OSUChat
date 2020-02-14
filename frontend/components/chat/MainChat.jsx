@@ -86,10 +86,18 @@ export class MainChat extends React.Component {
 
   render() {
     return (
-      <div className="chat-container">
-        {this.renderMessageList()}
-        <MessageFormContainer />
-      </div>
+      <React.Fragment>
+        <div className="chat-container">
+          {this.renderMessageList()}
+          <MessageFormContainer />
+        </div>
+        <p className="contact">
+          For feedback/contribution contact&nbsp;
+          <a className="link" style={{color: 'lightgray'}} href="mailto:Hakeemmidan@gmail.com">
+            Hakeemmidan@gmail.com
+          </a>
+        </p>
+      </React.Fragment>
     );
   }
 }
