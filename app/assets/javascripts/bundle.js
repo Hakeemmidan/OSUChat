@@ -884,6 +884,7 @@ function (_React$Component) {
       messages: []
     };
     _this.bottom = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.chatChannel;
     return _this;
   }
 
@@ -892,7 +893,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      App.cable.subscriptions.create({
+      this.chatChannel = App.cable.subscriptions.create({
         channel: "ChatChannel"
       }, {
         received: function received(data) {
@@ -927,6 +928,11 @@ function (_React$Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate() {
       this.bottom.current.scrollIntoView();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.chatChannel.unsubscribe();
     }
   }, {
     key: "loadChat",

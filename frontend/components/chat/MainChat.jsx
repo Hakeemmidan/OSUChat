@@ -6,10 +6,11 @@ export class MainChat extends React.Component {
     super(props);
     this.state = { messages: [] };
     this.bottom = React.createRef();
+    this.chatChannel;
   }
 
   componentDidMount() {
-    App.cable.subscriptions.create(
+    this.chatChannel = App.cable.subscriptions.create(
       { channel: "ChatChannel" },
       {
         received: data => {
@@ -38,6 +39,10 @@ export class MainChat extends React.Component {
 
   componentDidUpdate() {
     this.bottom.current.scrollIntoView();
+  }
+
+  componentWillUnmount() {
+    this.chatChannel.unsubscribe();
   }
 
   loadChat(firstLoadedMsgId) {
