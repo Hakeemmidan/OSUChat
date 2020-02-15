@@ -6,7 +6,7 @@ export const sessionErrorsReducer = (state = [], action) => {
 
   switch (action.type) {
     case RECEIVE_ERRORS:
-      return action.errors;
+      return action.errors ? action.errors : ['Something went wrong. Please contact Hakeemmidan@gmail.com for support'];
     default:
       return noErrors;
   }
