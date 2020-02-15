@@ -79,6 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  url: <%= ENV['DATABASE_URL'] %>
   <<: *default
   database: osu_chat__production
   username: osu_chat_
