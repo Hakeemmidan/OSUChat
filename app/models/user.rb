@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
   before_create :ensure_confirmation_token, :downcase_fields
+  before_destroy { |record| record.messages.update_all(author_id: nil, author_username: 'deleted_account') }
   attr_reader :password
 
   has_many :messages,
