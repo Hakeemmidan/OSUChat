@@ -20,10 +20,10 @@ A chat system for Oregon State University people. Anyone with an "@oregonstate.e
             - Sets up database
 
 ## Roadmap
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features and issues that need fixing.
+See the [open issues](https://github.com/Hakeemmidan/OSUChat/issues) for a list of proposed features and issues that need fixing.
 
 ## Contributing
-Contribution isn't only welcome, it's encouraged! But please keep in mind that not every suggestion will get integrated.
+Contributions are welcome, but please keep in mind that it is likely that not every suggestion will get integrated.
 
 For major changes, please open an issue first to discuss what you would like to change.
 

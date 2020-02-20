@@ -4,6 +4,6 @@ class SendConfirmationEmailJob < ApplicationJob
   def perform(userId)
     return if userId.nil?
 
-    UserMailer.confirmation_email(userId).deliver_later
+    UserMailer.confirmation_email(userId).deliver_now
   end
 end
