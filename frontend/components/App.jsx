@@ -6,11 +6,13 @@ import SignUpFormContainer from './auth/signup_form_container';
 import LogInFormContainer from './auth/login_form_container';
 import ForgotPasswordFormContainer from './auth/forgot_password_form_container';
 import MainChatContainer from './chat/main_chat_container';
+import ModalContainer from './modal/modal_container';
 import { UnknownRoute } from './unknown_route/UnknownRoute';
 
 
 export const App = (props) => (
   <React.Fragment>
+    <ModalContainer />
     <HeaderContainer />
     <Switch>
       <AuthRoute exact path="/login" component={LogInFormContainer} />

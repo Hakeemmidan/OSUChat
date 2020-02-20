@@ -13,6 +13,7 @@ export class SessionForm extends React.Component {
     this.displaySignupConfirmation = false;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.processForm = this.processForm.bind(this);
     this.renderSignupConfirmation = this.renderSignupConfirmation.bind(this);
     this.handleSubmitWithDefaultUsername = this.handleSubmitWithDefaultUsername.bind(this);
   }
@@ -23,8 +24,13 @@ export class SessionForm extends React.Component {
     });
   }
 
+  processForm(user) {
+    this.props.processForm(user).then(() => this.props.closeModal());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
+    this.props.openModal('loading')
     // Set the username to first part of email if there is no username
     if (this.state.username.replace(/ /g, '') === '') {
       this.setState({
@@ -32,13 +38,13 @@ export class SessionForm extends React.Component {
       }, this.handleSubmitWithDefaultUsername)
     } else {
       const user = Object.assign({}, this.state);
-      this.props.processForm(user);
+      this.processForm(user)
     }
   }
 
   handleSubmitWithDefaultUsername() {
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.processForm(user)
     this.displayErrors = true;
     this.displaySignupConfirmation = true;
   }

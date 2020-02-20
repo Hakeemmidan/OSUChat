@@ -4,9 +4,7 @@ import {
 } from '../../actions/session_actions';
 
 const confirmationReducer = (state = {}, action) => {
-    Object.freeze(state);
-    // return nothing if we hit default case
-    const noConf = {};
+    let oldState = Object.freeze(state);
 
     switch (action.type) {
         case SIGNUP_CURRENT_USER:
@@ -14,7 +12,7 @@ const confirmationReducer = (state = {}, action) => {
         case RECEIVE_FORGOT_PASSWORD:
             return { forgotPasswordConfirmation: action.confirmationMsg[0] }
         default:
-            return noConf;
+            return oldState;
     }
 };
 
