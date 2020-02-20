@@ -25,7 +25,11 @@ export class SessionForm extends React.Component {
   }
 
   processForm(user) {
-    this.props.processForm(user).then(() => this.props.closeModal());
+    this.props.processForm(user).then(() => (
+      this.props.closeModal()
+    ), err => (
+      this.props.closeModal()
+    ));
   }
 
   handleSubmit(e) {
@@ -39,6 +43,8 @@ export class SessionForm extends React.Component {
     } else {
       const user = Object.assign({}, this.state);
       this.processForm(user)
+      this.displayErrors = true;
+      this.displaySignupConfirmation = true;
     }
   }
 
