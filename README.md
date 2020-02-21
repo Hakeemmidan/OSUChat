@@ -23,9 +23,7 @@ A chat system for Oregon State University people. Anyone with an "@oregonstate.e
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features and issues that need fixing.
 
 ## Contributing
-Contribution is welcome. But please keep in mind that it is likely that not every suggestion will get integrated.
-
-For major changes, please open an issue first to discuss what you would like to change.
+Contribution is welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
