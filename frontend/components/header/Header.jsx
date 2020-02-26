@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ currentUser, logout }) => {
+export function Header({ currentUser, logout, openUserOptionsModal }) {
   const sessionLinks = () => (
     <nav>
       <Link to="/signup" className="header__btn--register">Register</Link>
@@ -10,7 +10,7 @@ const Header = ({ currentUser, logout }) => {
   );
   const personalGreeting = () => (
     <nav className="header__right-container">
-      <div className="header__right-container--username link">
+      <div className="header__right-container--username link" onClick={openUserOptionsModal}>
         {currentUser.username}
       </div>
       <button className="header__right-container--logout-btn" onClick={logout}>
@@ -26,5 +26,3 @@ const Header = ({ currentUser, logout }) => {
     </header>
   )
 };
-
-export default Header

@@ -3,13 +3,13 @@ import React from 'react'
 export function UserOptionsModal() {
     return (
       <div>
-        <span>
+        <p>
           Change Username
-        </span>
+        </p>
 
-        <span>
+        <p>
           Delete account
-        </span>
+        </p>
       </div>
     )
 }
