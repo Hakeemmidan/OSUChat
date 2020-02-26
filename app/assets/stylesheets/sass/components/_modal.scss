@@ -17,3 +17,13 @@
   padding: 30px 40px 30px 40px;
   border-radius: 10px;
 }
+
+.user-options {
+  &__change-username {
+    font-size: 25px;
+  }
+
+  &__delete-account {
+    margin-top: 40px;
+  }
+}
