@@ -10,7 +10,7 @@ const Header = ({ currentUser, logout }) => {
   );
   const personalGreeting = () => (
     <nav className="header__right-container">
-      <div className="header__right-container--username">
+      <div className="header__right-container--username link">
         {currentUser.username}
       </div>
       <button className="header__right-container--logout-btn" onClick={logout}>
