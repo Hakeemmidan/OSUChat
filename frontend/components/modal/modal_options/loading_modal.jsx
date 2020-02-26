@@ -2,8 +2,8 @@ import React from 'react'
 
 export function LoadingModal() {
   return (
-    <div className="loading-modal">
+    <div>
       Loading ...
-        </div>
+    </div>
   )
 }
