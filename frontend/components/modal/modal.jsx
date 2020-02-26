@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoadingModal } from './loading_modal';
+import { LoadingModal } from './modal_options/loading_modal';
 
 export function Modal({ modal, closeModal }) {
   if (!modal) {
