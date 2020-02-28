@@ -3,7 +3,7 @@ import React from 'react'
 export function UserOptionsModal() {
     return (
       <div>
-        <p className="link user-options__change-username">
+        <p className="link">
           Change Username
         </p>
 

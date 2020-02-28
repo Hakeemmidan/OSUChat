@@ -16,6 +16,7 @@ class Api::PasswordsController < ApplicationController
   end
 
   def reset
+    # All these instance variables can be found in reset.html.erb and reset.text.erb
     token = params[:token].to_s
 
     if params[:token].blank?

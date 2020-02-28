@@ -31,6 +31,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def update_username
+    user = User.find(params[:id])
+    user.update(username: params[:username])
+  end
+
   private
   def user_params
     params.require(:user).permit(:password, :email, :username)

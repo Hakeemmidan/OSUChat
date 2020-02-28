@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Run 'rails routes' to see all available routes
   namespace :api, default: { format: :json } do
     resources :users, only: [:create, :show] do
       member do
+        patch :update_username
         get :confirm_email
         get :new_pass_form
       end
