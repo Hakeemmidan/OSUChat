@@ -33,7 +33,12 @@ class Api::UsersController < ApplicationController
 
   def update_username
     user = User.find(params[:id])
-    user.update(username: params[:username])
+    user.username = params[:username]
+    if user.save
+      render json: ["Username successfully updated!"]
+    else
+      render json: user.errors.full_messages, status: 422
+    end
   end
 
   private
