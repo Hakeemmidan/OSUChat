@@ -41,6 +41,6 @@ class Api::PasswordsController < ApplicationController
   private
 
   def password_params
-    params.permit(:token, :password)
+    params.permit(:email ,:token, :password)
   end
 end
