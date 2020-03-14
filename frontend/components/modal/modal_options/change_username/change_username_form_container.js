@@ -6,7 +6,7 @@ import { ChangeUsernameFormModal } from './ChangeUsernameFormModal';
 const mapStateToProps = (state) => {
   return {
     errors: state.errors.user,
-    signupConfirmation: state.ui.confirmation.updateUsernameConfirmation
+    updateUsernameConfirmation: state.ui.confirmation.updateUsernameConfirmation
   };
 };
 

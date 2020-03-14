@@ -25,16 +25,19 @@ export class ChangeUsernameFormModal extends React.Component {
   }
 
   renderConfirmation() {
-    if (this.displayConfirmation && this.props.signupConfirmation) {
+    if (this.displayConfirmation && this.props.updateUsernameConfirmation) {
       return (
         <ul>
-          <li key="forgotPasswordConfirmation" className="session__msg--confirmation">
-            {this.props.forgotPasswordConfirmation}
+          <li
+            key="updateUsernameConfirmation"
+            className="session__msg--confirmation"
+          >
+            {this.props.updateUsernameConfirmation}
           </li>
         </ul>
-      )
+      );
     } else {
-      return null
+      return null;
     }
   }
 
@@ -90,5 +93,5 @@ export class ChangeUsernameFormModal extends React.Component {
 ChangeUsernameFormModal.propTypes = {
   processForm: PropTypes.func.isRequired,
   errors: PropTypes.array,
-  signupConfirmation: PropTypes.string
+  updateUsernameConfirmation: PropTypes.string
 };
