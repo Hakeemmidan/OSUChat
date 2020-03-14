@@ -55,7 +55,35 @@ export class ChangeUsernameFormModal extends React.Component {
   }
 
   render() {
+    return (
+      <div className="session__form-container">
+        <div className="session__form-box">
+          <form onSubmit={this.handleSubmit}>
+            Reset username:
+            <br />
 
+            {this.renderConfirmation()}
+            {this.renderErrors()}
+
+            <br />
+
+            <label className="session__input-container">
+              <input type="text"
+                value={this.state.newUsername}
+                onChange={this.update('newUsername')}
+                className="session__textbox"
+              />
+            </label>
+
+            <br />
+
+            <div className="session__btn--submit">
+              <input type="submit" value="Reset username" />
+            </div>
+          </form>
+        </div>
+      </div>
+    )
   }
 }
 
