@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateUsername } from '../../../../actions/user_actions';
+import { ChangeUsernameFormModal } from './change_username_form_modal';
 
 const mapStateToProps = (state) => {
   return {
@@ -15,4 +16,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)();
+export default connect(mapStateToProps, mapDispatchToProps)(ChangeUsernameFormModal);
