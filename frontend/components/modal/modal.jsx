@@ -1,6 +1,6 @@
 import React from 'react'
-import { LoadingModal } from './modal_options/loading_modal';
-import { UserOptionsModal } from './modal_options/user_options_modal';
+import { LoadingModal } from './modal_options/loading/loading_modal';
+import { UserOptionsModal } from './modal_options/user_options/user_options_modal';
 
 export function Modal({ modal, closeModal }) {
   if (!modal) {
