@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { signup, forgotPassword } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions'
 import { SessionForm } from './SessionForm';
