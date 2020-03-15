@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 
 export class MessageForm extends React.Component {
