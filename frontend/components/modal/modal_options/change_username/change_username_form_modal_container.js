@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { updateUsername } from '../../../../actions/user_actions';
 import { ChangeUsernameFormModal } from './ChangeUsernameFormModal';
