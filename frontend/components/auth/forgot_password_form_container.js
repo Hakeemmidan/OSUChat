@@ -1,18 +1,21 @@
 import { connect } from 'react-redux';
 import { forgotPassword } from '../../actions/session_actions';
-import { ForgotPasswordForm } from './ForgotPasswordForm';
+import { SingleFieldForm } from './SingleFieldForm';
 
 const mapStateToProps = (state) => {
     return {
         errors: state.errors.session,
-        forgotPasswordConfirmation: state.ui.confirmation.forgotPasswordConfirmation
+        confirmation: state.ui.confirmation.forgotPasswordConfirmation,
+        instructions: "Please enter your email to reset your password:",
+        fieldLabel: "Email",
+        submitButtonText: "Send password reset email"
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        forgotPassword: (email) => dispatch(forgotPassword(email))
+        processForm: (email) => dispatch(forgotPassword(email))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForgotPasswordForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleFieldForm);

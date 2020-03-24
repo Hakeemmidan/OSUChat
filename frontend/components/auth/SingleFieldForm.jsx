@@ -1,16 +1,16 @@
 import React from 'react';
 
-export class ForgotPasswordForm extends React.Component {
+export class SingleFieldForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             email: ''
         }
         this.displayErrors = false;
-        this.displayforgotPasswordConfirmation = false;
+        this.displayConfirmation = false;
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        this.renderforgotPasswordConfirmation = this.renderforgotPasswordConfirmation.bind(this);
+        this.renderConfirmation = this.renderConfirmation.bind(this);
     }
 
     update(field) {
@@ -21,17 +21,17 @@ export class ForgotPasswordForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.forgotPassword(this.state.email);
+        this.props.processForm(this.state.email);
         this.displayErrors = true;
-        this.displayforgotPasswordConfirmation = true;
+        this.displayConfirmation = true;
     }
 
-    renderforgotPasswordConfirmation() {
-        if (this.displayforgotPasswordConfirmation && this.props.forgotPasswordConfirmation) {
+    renderConfirmation() {
+      if (this.displayConfirmation && this.props.confirmation) {
             return (
                 <ul>
-                    <li key="forgotPasswordConfirmation" className="session__msg--confirmation">
-                        {this.props.forgotPasswordConfirmation}
+                    <li key="SingleFormField-confirmation" className="session__msg--confirmation">
+                        {this.props.confirmation}
                     </li>
                 </ul>
             )
@@ -61,17 +61,17 @@ export class ForgotPasswordForm extends React.Component {
             <div className="session__form-container">
                 <div className="session__form-box">
                     <form onSubmit={this.handleSubmit}>
-                        Please enter your email to reset your password:
+                        {this.props.instructions}
 
                         <br/>
 
-                        {this.renderforgotPasswordConfirmation()}
+                        {this.renderConfirmation()}
                         {this.renderErrors()}
 
                         <br/>
 
                         <label className="session__input-container">
-                            Email
+                            {this.props.fieldLabel}
                             <br />
                             <input type="text"
                                 value={this.state.email}
@@ -83,7 +83,7 @@ export class ForgotPasswordForm extends React.Component {
                         <br/>
 
                         <div className="session__btn--submit" onClick={this.handleSubmit}>
-                            <input type="submit" value="Send password reset email" />
+                            <input type="submit" value={this.props.submitButtonText} />
                         </div>
                     </form>
                 </div>
