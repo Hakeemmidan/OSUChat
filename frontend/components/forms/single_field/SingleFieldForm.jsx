@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class SingleFieldForm extends React.Component {
     constructor(props) {
@@ -88,3 +89,12 @@ export class SingleFieldForm extends React.Component {
         )
     }
 }
+
+SingleFieldForm.propTypes = {
+  processForm: PropTypes.func.isRequired,
+  errors: PropTypes.array,
+  confirmation: PropTypes.string,
+  instructions: PropTypes.string,
+  fieldLabel: PropTypes.string,
+  submitButtonText: PropTypes.string
+};
