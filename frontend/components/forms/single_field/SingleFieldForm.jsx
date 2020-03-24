@@ -9,6 +9,10 @@ export class SingleFieldForm extends React.Component {
         }
         this.displayErrors = false;
         this.displayConfirmation = false;
+        this.update = this.update.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderConfirmation = this.renderConfirmation.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
     }
 
     update(field) {

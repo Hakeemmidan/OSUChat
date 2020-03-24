@@ -5,6 +5,7 @@ import HeaderContainer from './header/header_container';
 import SignUpFormContainer from './forms/multi_field/signup_form_container';
 import LogInFormContainer from './forms/multi_field/login_form_container';
 import ForgotPasswordFormContainer from './forms/single_field/forgot_password_form_container';
+import ChangeUsernameFormContainer from './forms/single_field/change_username_form_container';
 import MainChatContainer from './chat/main_chat_container';
 import ModalContainer from './modal/modal_container';
 import { UnknownRoute } from './unknown_route/UnknownRoute';
@@ -19,6 +20,7 @@ export const App = (props) => (
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <AuthRoute exact path="/forgot-password" component={ForgotPasswordFormContainer} />
       <ProtectedRoute exact path="/chat" component={MainChatContainer} />
+      <ProtectedRoute exact path="/change-username" component={ChangeUsernameFormContainer}/>
       <Route exact path="/">
         {props.currentUser ? <MainChatContainer /> : <Redirect to={'/login'} />}
       </Route>
