@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { updateUsername } from '../../actions/user_actions';
+import { updateUsername } from '../../../actions/user_actions';
 import { SingleFormField } from './SingleFieldForm';
 
 const mapStateToProps = (state) => {

@@ -1,21 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../actions/modal_actions'
-import { login, forgotPassword } from '../../actions/session_actions';
+import { signup, forgotPassword } from '../../../actions/session_actions';
+import { openModal, closeModal } from '../../../actions/modal_actions'
 import { SessionForm } from './SessionForm';
 
-const mapStateToProps = ({ errors }) => {
+const mapStateToProps = (state) => {
   return {
-    errors: errors.session,
-    formType: 'login',
-    navLink: <Link className="session__btn--nav" to="/signup">Register</Link>,
+    errors: state.errors.session,
+    signupConfirmation: state.ui.confirmation.signupConfirmation,
+    formType: 'signup',
+    navLink: <Link className="session__btn--nav" to="/login">log in</Link>,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    processForm: (user) => dispatch(login(user)),
+    processForm: (user) => dispatch(signup(user)),
     forgotPassword: (email) => dispatch(forgotPassword(email)),
     openModal: (modal) => dispatch(openModal(modal)),
     closeModal: () => dispatch(closeModal())

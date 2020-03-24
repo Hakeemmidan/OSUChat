@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { forgotPassword } from '../../actions/session_actions';
+import { forgotPassword } from '../../../actions/session_actions';
 import { SingleFieldForm } from './SingleFieldForm';
 
 const mapStateToProps = (state) => {
