@@ -118,6 +118,8 @@ export class SessionForm extends React.Component {
             {this.renderSignupConfirmation()}
 
             <br />
+            <br />
+
 
             <label className="session__input-container">
               Email

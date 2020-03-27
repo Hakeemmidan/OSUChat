@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
     if @user
       if @user.email_confirmed
         sign_in(@user)
-        render 'api/users/show'
+        render @user
       else
         render json: ['Please confirm your email before signing in'], status: 422  
       end

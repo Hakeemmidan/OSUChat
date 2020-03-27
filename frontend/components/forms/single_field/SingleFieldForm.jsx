@@ -49,7 +49,7 @@ export class SingleFieldForm extends React.Component {
     renderErrors() {
         if (this.displayErrors) {
             return (
-                <ul>
+                <ul className="u-no-padding">
                     {this.props.errors.map((error, i) => (
                         <li key={`error-${i}`} className="session__msg--error">
                             {error}
