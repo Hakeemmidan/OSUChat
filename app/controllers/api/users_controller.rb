@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
         msg.author_username = user.username
         msg.save
       }
-      render json: ["Username successfully updated!"]
+      render json: user
     else
       render json: user.errors.full_messages, status: 422
     end
