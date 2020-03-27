@@ -34,6 +34,10 @@ class Api::UsersController < ApplicationController
     user = User.find(params[:id])
     user.username = params[:username]
     if user.save
+      user.messages.each { |msg|
+        msg.author_username = user.username
+        msg.save
+      }
       render json: ["Username successfully updated!"]
     else
       render json: user.errors.full_messages, status: 422
