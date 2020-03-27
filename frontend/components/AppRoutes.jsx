@@ -10,8 +10,7 @@ import MainChatContainer from './chat/main_chat_container';
 import ModalContainer from './modal/modal_container';
 import { UnknownRoute } from './unknown_route/UnknownRoute';
 
-
-export const App = (props) => (
+export const AppRoutes = (props) => (
   <React.Fragment>
     <ModalContainer />
     <HeaderContainer />
