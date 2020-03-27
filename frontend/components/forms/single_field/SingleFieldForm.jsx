@@ -5,7 +5,7 @@ export class SingleFieldForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: ''
+            body: ''
         }
         this.displayErrors = false;
         this.displayConfirmation = false;
@@ -23,7 +23,11 @@ export class SingleFieldForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.processForm(this.state.email);
+        if (this.props.type === 'change-username') {
+          this.props.processForm(this.props.currentUser.id, this.state.body);
+        } else {
+          this.props.processForm(this.state.body)
+        }
         this.displayErrors = true;
         this.displayConfirmation = true;
     }
@@ -76,8 +80,8 @@ export class SingleFieldForm extends React.Component {
                             {this.props.fieldLabel}
                             <br />
                             <input type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
+                                value={this.state.body}
+                                onChange={this.update('body')}
                                 className="session__textbox"
                             />
                         </label>
@@ -96,8 +100,10 @@ export class SingleFieldForm extends React.Component {
 
 SingleFieldForm.propTypes = {
   processForm: PropTypes.func.isRequired,
+  currentUser: PropTypes.object,
   errors: PropTypes.array,
   confirmation: PropTypes.string,
+  type: PropTypes.string.isRequired,
   instructions: PropTypes.string,
   fieldLabel: PropTypes.string,
   submitButtonText: PropTypes.string

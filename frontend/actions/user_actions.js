@@ -12,8 +12,8 @@ export const receiveUserErrors = errors => ({
   errors
 });
 
-export const updateUsername = (username) => dispatch => (
-  UserAPIUtil.updateUsername(username).then((confirmationMsg) => (
+export const updateUsername = (id, username) => dispatch => (
+  UserAPIUtil.updateUsername(id, username).then((confirmationMsg) => (
     dispatch(receiveUpdateUsername(confirmationMsg))
   ), err => (
     dispatch(receiveUserErrors(err.responseJSON))
