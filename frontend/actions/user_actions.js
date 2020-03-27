@@ -19,10 +19,12 @@ export const receiveUserErrors = errors => ({
 });
 
 export const updateUsername = (id, username) => dispatch => (
-  UserAPIUtil.updateUsername(id, username).then((user) => {
-    dispatch(receiveUpdateUsername(user));
-    dispatch(updateUsernameConfirmation());
-  }, err => (
-    dispatch(receiveUserErrors(err.responseJSON))
-  ))
+  UserAPIUtil.updateUsername(id, username)
+  .then(
+    (user) => {
+      dispatch(receiveUpdateUsername(user));
+      dispatch(updateUsernameConfirmation());
+  }, err => {
+      dispatch(receiveUserErrors(err.responseJSON))
+  })
 );
