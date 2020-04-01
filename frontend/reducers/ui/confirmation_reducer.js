@@ -1,5 +1,6 @@
 import { SIGNUP_CURRENT_USER, RECEIVE_FORGOT_PASSWORD } from '../../actions/session_actions';
 import { RECEIVE_UPDATE_USERNAME } from "../../actions/user_actions";
+import { OPEN_MODAL, CLOSE_MODAL } from '../../actions/modal_actions';
 
 const confirmationReducer = (state = {}, action) => {
   let oldState = Object.freeze(state);
@@ -11,8 +12,11 @@ const confirmationReducer = (state = {}, action) => {
       return { forgotPasswordConfirmation: action.confirmationMsg[0] }
     case RECEIVE_UPDATE_USERNAME:
       return { updateUsernameConfirmation: action.confirmationMsg[0] }
-    default:
+    case OPEN_MODAL:
+    case CLOSE_MODAL:
       return oldState;
+    default:
+      return [];
   }
 };
 
