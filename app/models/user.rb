@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  validates :username, :session_token, presence: true, uniqueness: {case_sensitive: false}
+  validates :username, presence: true,
+            format: { without: /\s/, message: "must contain no spaces" },
+            uniqueness: { case_sensitive: false }
+  validates :session_token, presence: true, uniqueness: {case_sensitive: false}
   validates :email, presence: true,
             format: { with: /[a-zA-Z0-9_.+-]+@(oregonstate)\.edu/i,
                     message: "must have an @oregonstate.edu domain" },
