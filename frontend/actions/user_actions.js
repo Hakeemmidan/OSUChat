@@ -21,7 +21,7 @@ export const receiveUserErrors = errors => ({
 export const updateUsername = (id, username) => dispatch => (
   UserAPIUtil.updateUsername(id, username)
   .then(
-    (user) => {
+    user => {
       dispatch(receiveUpdateUsername(user));
       dispatch(updateUsernameConfirmation());
   }, err => {
