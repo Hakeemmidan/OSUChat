@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   validates :username, presence: true,
             format: { without: /\s/, message: "must contain no spaces" },
+            length: { in: 3..20 },
             uniqueness: { case_sensitive: false }
   validates :session_token, presence: true, uniqueness: {case_sensitive: false}
   validates :email, presence: true,
