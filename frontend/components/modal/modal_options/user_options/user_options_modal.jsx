@@ -8,6 +8,7 @@ export class UserOptionsModal extends React.Component {
     super(props);
 
     this.handleDeleteAccount = this.handleDeleteAccount.bind(this);
+    this.handleChangeUsername = this.handleChangeUsername.bind(this);
   }
 
   handleDeleteAccount(e) {
@@ -20,14 +21,16 @@ export class UserOptionsModal extends React.Component {
     }
   }
 
+  handleChangeUsername(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.closeModal();
+  }
+
   render(){
     return (
       <div>
-        <p onClick={e => {
-          e.preventDefault();
-          e.stopPropagation();
-          this.props.closeModal();
-        }}>
+        <p onClick={this.handleChangeUsername}>
           <Link className="link" to="/change-username">
             Change Username
           </Link> 
