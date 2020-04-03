@@ -10,16 +10,26 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(user_params[:id])
+
+    if user.destroy
+      render json: {}
+    else
+      render user.errors.full_messages, status: 422
+    end
+  end
+
   def update_username
     user = User.find(params[:id])
     
-    # Note : this return false if casing is different
     if (user.username == params[:username])
       render json: user
       return
     end
 
     user.username = params[:username]
+
     if user.save
       user.messages.each { |msg|
         msg.author_username = user.username
