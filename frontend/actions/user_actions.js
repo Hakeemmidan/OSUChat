@@ -28,8 +28,3 @@ export const updateUsername = (id, username) => dispatch => (
       dispatch(receiveUserErrors(err.responseJSON))
   })
 );
-
-export const deleteUser = (id) => (
-  // no dispatching of any redux actions
-  UserAPIUtil.deleteUser(id)
-)
