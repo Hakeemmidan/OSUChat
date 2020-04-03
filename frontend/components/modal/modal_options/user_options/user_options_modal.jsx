@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 export class UserOptionsModal extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleDeleteAccount = this.handleDeleteAccount.bind(this);
   }
 
-  handleDeleteAccount() {
+  handleDeleteAccount(e) {
+    e.preventDefault();
+    e.stopPropagation();
     let currentUserId = this.props.currentUser.id;
     
     deleteUser(currentUserId)
@@ -28,7 +32,7 @@ export class UserOptionsModal extends React.Component {
 
         </p>
 
-        <p className="link__red user-options__delete-account">
+        <p onClick={this.handleDeleteAccount} className="link__red user-options__delete-account">
           Delete account
         </p>
       </div>
