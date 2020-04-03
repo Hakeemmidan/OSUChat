@@ -42,7 +42,7 @@ class Api::UsersController < ApplicationController
   end
 
   # API Endpoints with Rails views 
-    # (done this way to utilize some of Rails' built in methods)
+    # (done this way to utilize some of Rails' built-in Action Mailer methods)
   def confirm_email
     user = User.find_by_confirm_token(params[:id])
     if user

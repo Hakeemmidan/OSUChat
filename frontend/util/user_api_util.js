@@ -5,3 +5,10 @@ export const updateUsername = (id, username) => {
     data: { username }
   });
 };
+
+export const deleteUser = (id) => {
+  return $.ajax({
+    url: `/api/users/${id}`,
+    method: 'DELETE'
+  })
+}
