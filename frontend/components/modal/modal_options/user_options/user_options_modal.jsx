@@ -1,5 +1,6 @@
 import React from 'react'
 import { deleteUser } from '../../../../util/user_api_util';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 export class UserOptionsModal extends React.Component {
@@ -34,3 +35,8 @@ export class UserOptionsModal extends React.Component {
     )
   }
 }
+
+UserOptionsModal.propTypes = {
+  currentUser: PropTypes.object.isRequired,
+  closeModal: PropTypes.func.isRequired,
+};
