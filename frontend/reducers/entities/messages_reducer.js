@@ -3,7 +3,7 @@ import {
   RECEIVE_LOAD_MESSAGES
 } from "../../actions/message_actions";
 
-const messagesReducer = (oldState = {}, action) => {
+export const messagesReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let nextState;
   let messagesObj;
@@ -24,5 +24,3 @@ const messagesReducer = (oldState = {}, action) => {
       return oldState;
   }
 };
-
-export default messagesReducer;

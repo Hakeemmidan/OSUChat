@@ -2,7 +2,7 @@ import { SIGNUP_CURRENT_USER, RECEIVE_FORGOT_PASSWORD } from '../../actions/sess
 import { RECEIVE_UPDATE_USERNAME } from "../../actions/user_actions";
 import { OPEN_MODAL, CLOSE_MODAL } from '../../actions/modal_actions';
 
-const confirmationReducer = (state = {}, action) => {
+export const confirmationReducer = (state = {}, action) => {
   let oldState = Object.freeze(state);
 
   switch (action.type) {
@@ -19,5 +19,3 @@ const confirmationReducer = (state = {}, action) => {
       return [];
   }
 };
-
-export default confirmationReducer;
