@@ -7,6 +7,12 @@ export class UserOptionsModal extends React.Component {
     super(props);
   }
 
+  handleDeleteAccount() {
+    let currentUserId = this.props.currentUser.id;
+    
+    deleteUser(currentUserId)
+  }
+
   render(){
     return (
       <div>

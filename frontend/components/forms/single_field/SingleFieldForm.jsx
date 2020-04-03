@@ -100,10 +100,10 @@ export class SingleFieldForm extends React.Component {
 
 SingleFieldForm.propTypes = {
   processForm: PropTypes.func.isRequired,
-  currentUser: PropTypes.object,
+  currentUser: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
   errors: PropTypes.array,
   confirmation: PropTypes.string,
-  type: PropTypes.string.isRequired,
   instructions: PropTypes.string,
   fieldLabel: PropTypes.string,
   submitButtonText: PropTypes.string
