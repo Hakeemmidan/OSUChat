@@ -14,8 +14,10 @@ export class UserOptionsModal extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     let currentUserId = this.props.currentUser.id;
-    
-    deleteUser(currentUserId)
+
+    if (confirm("Are you sure you want to delete your account?")) {
+      deleteUser(currentUserId)
+    }
   }
 
   render(){
