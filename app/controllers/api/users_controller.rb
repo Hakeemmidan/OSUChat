@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  # API Endpoints connected to React
   def create
     @user = User.new(user_params)
     if @user.save
@@ -9,28 +10,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def confirm_email
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
-    end
-  end
-
-  def new_pass_form
-    user = User.find_by_reset_password_token(params[:id])
-    
-    if user && user.password_token_valid?
-      @link_valid = true
-    else
-      @link_valid = false
-    end
-  end
-
   def update_username
     user = User.find(params[:id])
     
-    # return user (sending success message) if current username is same as entered username
-      # (has to be same casing as well)
+    # Note : this return false if casing is different
     if (user.username == params[:username])
       render json: user
       return
@@ -45,6 +28,25 @@ class Api::UsersController < ApplicationController
       render json: user
     else
       render json: user.errors.full_messages, status: 422
+    end
+  end
+
+  # API Endpoints with Rails views 
+    # (done this way to utilize some of Rails' built in methods)
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+    end
+  end
+
+  def new_pass_form
+    user = User.find_by_reset_password_token(params[:id])
+    
+    if user && user.password_token_valid?
+      @link_valid = true
+    else
+      @link_valid = false
     end
   end
 
