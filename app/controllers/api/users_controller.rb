@@ -28,6 +28,14 @@ class Api::UsersController < ApplicationController
 
   def update_username
     user = User.find(params[:id])
+    
+    # return user (sending success message) if current username is same as entered username
+      # (has to be same casing as well)
+    if (user.username == params[:username])
+      render json: user
+      return
+    end
+
     user.username = params[:username]
     if user.save
       user.messages.each { |msg|
