@@ -1,13 +1,19 @@
 import React from 'react'
+import { deleteUser } from '../../../../util/user_api_util';
 import { Link } from 'react-router-dom';
 
-export function UserOptionsModal(props) {
+export class UserOptionsModal extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render(){
     return (
       <div>
         <p onClick={e => {
           e.preventDefault();
           e.stopPropagation();
-          props.closeModal();
+          this.props.closeModal();
         }}>
           <Link className="link" to="/change-username">
             Change Username
@@ -20,4 +26,5 @@ export function UserOptionsModal(props) {
         </p>
       </div>
     )
+  }
 }
