@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { closeModal } from '../../../../actions/modal_actions';
+import { openModal, closeModal } from '../../../../actions/modal_actions';
+import { logout } from '../../../../actions/session_actions';
 import { UserOptionsModal } from './user_options_modal';
 
 const mapStateToProps = ({ entities, session }) => {
@@ -10,6 +11,8 @@ const mapStateToProps = ({ entities, session }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    logout: () => dispatch(logout()),
+    openModal: (modalName) => dispatch(openModal(modalName)),
     closeModal: () => dispatch(closeModal())
   };
 };

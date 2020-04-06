@@ -18,6 +18,12 @@ export class UserOptionsModal extends React.Component {
 
     if (confirm("Are you sure you want to delete your account?")) {
       deleteUser(currentUserId)
+        .then(() => 
+          this.props.logout()
+            .then(() =>
+              this.props.openModal('deleteAccount')
+            )
+        )
     }
   }
 
@@ -48,4 +54,6 @@ export class UserOptionsModal extends React.Component {
 UserOptionsModal.propTypes = {
   currentUser: PropTypes.object.isRequired,
   closeModal: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
