@@ -20,7 +20,7 @@ class Api::SessionsController < ApplicationController
   def destroy
     if current_user
       sign_out
-      render json: {}
+      render json: {}, status: 200
     else
       render json: ['Nobody singed in'], status: 404
     end

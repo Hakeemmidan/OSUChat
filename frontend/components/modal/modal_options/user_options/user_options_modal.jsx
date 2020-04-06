@@ -17,9 +17,9 @@ export class UserOptionsModal extends React.Component {
     let currentUserId = this.props.currentUser.id;
 
     if (confirm("Are you sure you want to delete your account?")) {
-      deleteUser(currentUserId)
-        .then(() => 
-          this.props.logout()
+      this.props.logout()
+        .then(() =>
+          deleteUser(currentUserId)
             .then(() =>
               this.props.openModal('deleteAccount')
             )

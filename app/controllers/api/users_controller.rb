@@ -12,10 +12,9 @@ class Api::UsersController < ApplicationController
 
   def destroy
     user = User.find(params[:id])
-
-    if user
-      user.destroy
-      render json: {}
+    
+    if user && user.destroy
+      render json: {}, status: 200
     end
   end
 
