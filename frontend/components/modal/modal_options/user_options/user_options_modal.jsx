@@ -52,7 +52,7 @@ export class UserOptionsModal extends React.Component {
 }
 
 UserOptionsModal.propTypes = {
-  currentUser: PropTypes.object.isRequired,
+  currentUser: PropTypes.object,
   closeModal: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired

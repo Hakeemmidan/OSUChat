@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 export function Ciao() {
   return (
-    <img src="../../../../assets/ciao.png" alt="Ciao! [Ps: Know that you're welcome to come back anytime]"/>
-  )
+    <img
+      src={window.ciaoImagePath}
+      alt="Ciao! [Ps: Know that you're welcome to come back anytime]"
+    />
+  );
 }
