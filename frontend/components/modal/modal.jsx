@@ -1,5 +1,6 @@
 import React from 'react'
 import { LoadingModal } from './modal_options/loading/loading_modal';
+import { Ciao } from'./modal_options/ciao/Ciao';
 import UserOptionsModalContainer from './modal_options/user_options/user_options_modal_container';
 
 export function Modal({ modal, closeModal }) {
@@ -14,6 +15,9 @@ export function Modal({ modal, closeModal }) {
       break;
     case 'userOptions':
       component = <UserOptionsModalContainer />
+      break;
+    case 'deleteAccount':
+      component = <Ciao />
       break;
     default:
       return null;
