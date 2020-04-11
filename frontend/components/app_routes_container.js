@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import React from 'react';
-import { App } from './App';
+import { AppRoutes } from './AppRoutes';
 
 const mapStateToProps = ({ entities, session }) => {
   return {
@@ -8,4 +7,4 @@ const mapStateToProps = ({ entities, session }) => {
   };
 };
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, null)(AppRoutes);

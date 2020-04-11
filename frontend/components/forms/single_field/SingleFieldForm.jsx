@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export class ForgotPasswordForm extends React.Component {
+export class SingleFieldForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: ''
+            body: ''
         }
         this.displayErrors = false;
-        this.displayforgotPasswordConfirmation = false;
+        this.displayConfirmation = false;
+        this.update = this.update.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderConfirmation = this.renderConfirmation.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
-        this.renderforgotPasswordConfirmation = this.renderforgotPasswordConfirmation.bind(this);
     }
 
     update(field) {
@@ -21,17 +23,21 @@ export class ForgotPasswordForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.forgotPassword(this.state.email);
+        if (this.props.type === 'change-username') {
+          this.props.processForm(this.props.currentUser.id, this.state.body);
+        } else {
+          this.props.processForm(this.state.body)
+        }
         this.displayErrors = true;
-        this.displayforgotPasswordConfirmation = true;
+        this.displayConfirmation = true;
     }
 
-    renderforgotPasswordConfirmation() {
-        if (this.displayforgotPasswordConfirmation && this.props.forgotPasswordConfirmation) {
+    renderConfirmation() {
+      if (this.displayConfirmation && this.props.confirmation) {
             return (
                 <ul>
-                    <li key="forgotPasswordConfirmation" className="session__msg--confirmation">
-                        {this.props.forgotPasswordConfirmation}
+                    <li key="SingleFormField-confirmation" className="session__msg--confirmation">
+                        {this.props.confirmation}
                     </li>
                 </ul>
             )
@@ -43,7 +49,7 @@ export class ForgotPasswordForm extends React.Component {
     renderErrors() {
         if (this.displayErrors) {
             return (
-                <ul>
+                <ul className="u-no-padding">
                     {this.props.errors.map((error, i) => (
                         <li key={`error-${i}`} className="session__msg--error">
                             {error}
@@ -61,21 +67,21 @@ export class ForgotPasswordForm extends React.Component {
             <div className="session__form-container">
                 <div className="session__form-box">
                     <form onSubmit={this.handleSubmit}>
-                        Please enter your email to reset your password:
+                        {this.props.instructions}
 
                         <br/>
 
-                        {this.renderforgotPasswordConfirmation()}
+                        {this.renderConfirmation()}
                         {this.renderErrors()}
 
                         <br/>
 
                         <label className="session__input-container">
-                            Email
+                            {this.props.fieldLabel}
                             <br />
                             <input type="text"
-                                value={this.state.email}
-                                onChange={this.update('email')}
+                                value={this.state.body}
+                                onChange={this.update('body')}
                                 className="session__textbox"
                             />
                         </label>
@@ -83,7 +89,7 @@ export class ForgotPasswordForm extends React.Component {
                         <br/>
 
                         <div className="session__btn--submit" onClick={this.handleSubmit}>
-                            <input type="submit" value="Send password reset email" />
+                            <input type="submit" value={this.props.submitButtonText} />
                         </div>
                     </form>
                 </div>
@@ -91,3 +97,14 @@ export class ForgotPasswordForm extends React.Component {
         )
     }
 }
+
+SingleFieldForm.propTypes = {
+  processForm: PropTypes.func.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  errors: PropTypes.array,
+  confirmation: PropTypes.string,
+  instructions: PropTypes.string,
+  fieldLabel: PropTypes.string,
+  submitButtonText: PropTypes.string
+};

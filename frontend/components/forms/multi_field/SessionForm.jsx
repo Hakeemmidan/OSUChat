@@ -72,7 +72,7 @@ export class SessionForm extends React.Component {
   renderErrors() {
     if (this.displayErrors) {
       return (
-        <ul>
+        <ul className="u-no-padding">
           {this.props.errors.map((error, i) => (
             <li key={`error-${i}`} className="session__msg--error">
               {error}
@@ -117,8 +117,8 @@ export class SessionForm extends React.Component {
             {this.renderErrors()}
             {this.renderSignupConfirmation()}
 
-            <br/>
-            <br/>
+            <br />
+            <br />
 
 
             <label className="session__input-container">

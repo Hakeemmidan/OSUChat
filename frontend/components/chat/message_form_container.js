@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { speak } from '../../actions/message_actions';
 import { MessageForm } from './MessageForm';
 

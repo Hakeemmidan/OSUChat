@@ -34,13 +34,11 @@
   }
   
   &--error {
-    // This nesting gives bullet different color than text
-    color: darkred;
+    color: white;
     background-color: darkred;
     padding: 10px 4px;
-    &::first-line {
-      color: white;
-    }
+    list-style-type: none;
+    margin-bottom: 5px;
   }
 }
 

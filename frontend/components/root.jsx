@@ -1,13 +1,12 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
-import AppContainer from './app_container';
+import AppRoutesContainer from './app_routes_container';
 
 export const Root = (props) => (
   <Provider store={props.store}>
     <HashRouter>
-      <AppContainer />
+      <AppRoutesContainer />
     </HashRouter>
   </Provider>
 )

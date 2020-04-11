@@ -1,5 +1,4 @@
 class Api::SessionsController < ApplicationController
-  
   def create
     @user = User.find_by_credentials(
       params[:user][:email],
@@ -9,7 +8,7 @@ class Api::SessionsController < ApplicationController
     if @user
       if @user.email_confirmed
         sign_in(@user)
-        render 'api/users/show'
+        render @user
       else
         render json: ['Please confirm your email before signing in'], status: 422  
       end
@@ -21,7 +20,7 @@ class Api::SessionsController < ApplicationController
   def destroy
     if current_user
       sign_out
-      render json: {}
+      render json: {}, status: 200
     else
       render json: ['Nobody singed in'], status: 404
     end

@@ -4,6 +4,12 @@
   cursor: pointer;
   color: gray;
   text-decoration: underline;
+
+  &__red {
+    @extend .link;
+    color: salmon;
+  }
+
   @include hover-supported() {
     &:hover {
       opacity: 0.8;

@@ -23,9 +23,9 @@ A chat system for Oregon State University people. Anyone with an "@oregonstate.e
 See the [open issues](https://github.com/Hakeemmidan/OSUChat/issues) for a list of proposed features and issues that need fixing.
 
 ## Contributing
-Contributions are welcome, but please keep in mind that it is likely that not every suggestion will get integrated.
+Contribution is welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-For major changes, please open an issue first to discuss what you would like to change.
+When contributing, please keep in mind that we do not have any profit-sharing agreements. We don't have any because it can get very complicated as to how split profit (if there is any). Nevertheless, this is up for discussion, and openning an issue to discuss how it may be solved is also encouraged.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

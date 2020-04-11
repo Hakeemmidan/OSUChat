@@ -97,7 +97,7 @@ export class MainChat extends React.Component {
           <MessageFormContainer />
         </div>
         <p className="contact">
-          For feedback/contribution contact&nbsp;
+          For feedback contact&nbsp;
           <a className="link" style={{color: 'lightgray'}} href="mailto:Hakeemmidan@gmail.com">
             Hakeemmidan@gmail.com
           </a>
