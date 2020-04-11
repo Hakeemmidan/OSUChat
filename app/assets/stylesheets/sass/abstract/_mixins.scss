@@ -8,13 +8,13 @@
 
 // screen responsiveness
 @mixin tablet-view {
-  @media screen and (max-width: $large-breakpoint) {
+  @media screen and (max-width: $large-bp) {
     @content;
   }
 }
 
-@mixin phone-view {
-  @media screen and (max-width: $medium-breakpoint) {
+@mixin mobile-phone-view {
+  @media screen and (max-width: $medium-bp) {
     @content;
   }
 }
