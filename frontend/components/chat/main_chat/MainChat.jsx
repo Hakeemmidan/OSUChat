@@ -1,5 +1,5 @@
 import React from "react";
-import MessageFormContainer from "./message_form_container";
+import MessageFormContainer from "../message_form/message_form_container";
 
 export class MainChat extends React.Component {
   constructor(props) {

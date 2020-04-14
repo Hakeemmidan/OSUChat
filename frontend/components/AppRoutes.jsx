@@ -6,7 +6,7 @@ import SignUpFormContainer from './forms/multi_field/signup_form_container';
 import LogInFormContainer from './forms/multi_field/login_form_container';
 import ForgotPasswordFormContainer from './forms/single_field/forgot_password_form_container';
 import ChangeUsernameFormContainer from './forms/single_field/change_username_form_container';
-import MainChatContainer from './chat/main_chat_container';
+import MainChatContainer from './chat/main_chat/main_chat_container';
 import ModalContainer from './modal/modal_container';
 import { UnknownRoute } from './unknown_route/UnknownRoute';
 

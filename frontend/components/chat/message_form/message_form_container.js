@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { speak } from '../../actions/message_actions';
+import { speak } from '../../../actions/message_actions';
 import { MessageForm } from './MessageForm';
 
 const mapStateToProps = ({ entities, session }) => {

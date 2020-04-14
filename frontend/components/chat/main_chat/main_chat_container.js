@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { load } from '../../actions/message_actions';
+import { load } from '../../../actions/message_actions';
 import { MainChat } from './MainChat';
 
 const mapStateToProps = ({entities}) => {
