@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 
 export const MessageForm = ({ currentUser }) => {
   const [body, useBody] = useState('');
@@ -8,7 +9,7 @@ export const MessageForm = ({ currentUser }) => {
       e.preventDefault();
       e.stopPropagation();
     }
-    
+
     // Disallow empty messages
     if (body.replace(/\s/g, '') === '') return;
 
@@ -34,3 +35,7 @@ export const MessageForm = ({ currentUser }) => {
     </form>
   )
 }
+
+MessageForm.propTypes = {
+  currentUser: PropTypes.object.isRequired
+};
