@@ -1,47 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
-export class MessageForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { body: "" };
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+export const MessageForm = ({ currentUser }) => {
+  const [body, useBody] = useState('');
 
-  update(field) {
-    return e =>
-      this.setState({ [field]: e.currentTarget.value });
-  }
-
-  handleSubmit(e) {
+  const handleSubmit = e => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-
+    
     // Disallow empty messages
-    if (this.state.body.replace(/\s/g, '') === '') return;
+    if (body.replace(/\s/g, '') === '') return;
 
-    let messageObj = { 
-        body: this.state.body,
-        authorId: this.props.currentUser.id,
-        authorUsername: this.props.currentUser.username
+    let messageObj = {
+      body: body,
+      authorId: currentUser.id,
+      authorUsername: currentUser.username
     };
     App.cable.subscriptions.subscriptions[0].speak({ message: messageObj });
-    this.setState({ body: "" });
+    useBody('');
   }
 
-  render() {
-    return (
-      <form className="chat-form" onSubmit={this.handleSubmit}>
-        <input
-          className="chat-form__input"
-          maxLength="280"
-          value={this.state.body}
-          onChange={this.update("body")}
-          placeholder="Enter message here"
-        />
-        <input type="submit" className="chat-form__submit" value="⏎" />
-      </form>
-    );
-  }
+  return (
+    <form className="chat-form" onSubmit={handleSubmit}>
+      <input
+        className="chat-form__input"
+        maxLength="280"
+        value={body}
+        onChange={e => useBody(e.currentTarget.value)}
+        placeholder="Enter message here"
+      />
+      <input type="submit" className="chat-form__submit" value="⏎" />
+    </form>
+  )
 }
