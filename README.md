@@ -1,6 +1,4 @@
 # OSUChat
-([live link](http://www.osuchat.com))
-
 OSUChat is a chat system for Oregon State University people. Anyone with an "@oregonstate.edu" email domain can sign up.
 
 ## Tech stack
